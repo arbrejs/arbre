@@ -10,8 +10,8 @@ test('insert before the given node', t => {
     ]
   })
 
-  const nnode = new Node({ type: 'qux' })
-  nnode.insertBefore(node.at(0), 1)
+  const nnode = new Node({ type: 'baz' })
+  nnode.insertBefore(node.at(1))
 
   t.is(node.children.length, 3)
   t.is(node.at(0).value.type, 'bar')

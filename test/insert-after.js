@@ -11,7 +11,7 @@ test('insert after the given node', t => {
   })
 
   const nnode = new Node({ type: 'baz' })
-  nnode.insertAfter(node.at(0), 1)
+  nnode.insertAfter(node.at(0))
 
   t.is(node.children.length, 3)
   t.is(node.at(0).value.type, 'bar')

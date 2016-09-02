@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks, { Node } from '../'
+import grapes, { Node } from '../'
 
 test('insert at the given index', t => {
-  const node = oaks({
+  const node = grapes({
     type: 'foo',
     children: [
       { type: 'bar' },

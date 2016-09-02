@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks from '../'
+import grapes from '../'
 
 test('insert all children just after itself', t => {
-  const node = oaks({
+  const node = grapes({
     type: 'foo',
     children: [
       {
@@ -24,7 +24,7 @@ test('insert all children just after itself', t => {
 })
 
 test('ignore root', t => {
-  const node = oaks({
+  const node = grapes({
     type: 'foo'
   })
 

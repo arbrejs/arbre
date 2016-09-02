@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks from '../'
+import grapes from '../'
 
 test('remove a child', t => {
-  const node = oaks()
+  const node = grapes()
   node.add(1)
   node.remove(1)
 
@@ -10,7 +10,7 @@ test('remove a child', t => {
 })
 
 test('return the removed node', t => {
-  const node = oaks()
+  const node = grapes()
   const nodeAdded = node.add(1)
   const nodeRemoved = node.remove(1)
 

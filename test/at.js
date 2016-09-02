@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks from '../'
+import grapes from '../'
 
 test('return node at given index', t => {
-  const node = oaks({
+  const node = grapes({
     children: [
       { type: 'foo' },
       { type: 'bar' },
@@ -16,7 +16,7 @@ test('return node at given index', t => {
 })
 
 test('accept rest parameters', t => {
-  const node = oaks({
+  const node = grapes({
     children: [
       {
         type: 'foo',

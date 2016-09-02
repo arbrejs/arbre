@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks from '../'
+import grapes from '../'
 
 test('create a deep copy', t => {
-  const snode = oaks({
+  const snode = grapes({
     type: 'foo',
     children: [
       { type: 'bar' }
@@ -19,7 +19,7 @@ test('create a deep copy', t => {
 })
 
 test('inplace modify nodes', t => {
-  const snode = oaks({
+  const snode = grapes({
     type: 'foo',
     children: [
       { type: 'bar' }
@@ -45,7 +45,7 @@ test('inplace modify nodes', t => {
 })
 
 test('strip node when null is returned', t => {
-  const snode = oaks({
+  const snode = grapes({
     type: 'foo',
     children: [
       { type: 'bar' },
@@ -67,7 +67,7 @@ test('strip node when null is returned', t => {
 })
 
 test('strip a node with all its children', t => {
-  const snode = oaks({
+  const snode = grapes({
     type: 'foo',
     children: [
       {

@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks, { Node } from '../'
+import grapes, { Node } from '../'
 
 test('add a child', t => {
-  const node = oaks()
+  const node = grapes()
   node.add(1)
 
   t.true(node.at(0) instanceof Node)
@@ -10,7 +10,7 @@ test('add a child', t => {
 })
 
 test('return the new child', t => {
-  const node = oaks()
+  const node = grapes()
   const nodeRef = node.add(1)
 
   t.is(node.at(0), nodeRef)

@@ -1,8 +1,8 @@
 import test from 'ava'
-import oaks from '../'
+import grapes from '../'
 
 test('filter using given predicate', t => {
-  const snode = oaks({
+  const snode = grapes({
     type: 'foo',
     children: [
       { type: 'bar' },

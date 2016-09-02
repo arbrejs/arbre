@@ -1,6 +1,6 @@
 const Node = require('./lib/node')
 
-module.exports = function oaks(value) {
+module.exports = function grapes(value) {
   if ('object' === typeof value) {
     return Node.fromObject(value)
   }

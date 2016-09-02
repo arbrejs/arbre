@@ -1,10 +1,10 @@
 {
-  "name": "oaks",
+  "name": "grapes",
   "version": "0.0.0",
   "description": "Versioned trees for green thumbs",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
-  "repository": "ngryman/oaks",
+  "repository": "ngryman/grapes",
   "main": "index.js",
   "files": [
     "index.js"

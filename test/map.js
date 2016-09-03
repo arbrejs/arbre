@@ -2,50 +2,47 @@ import test from 'ava'
 import grapes from '../'
 
 test('create a deep copy', t => {
-  const snode = grapes({
+  const tree1 = grapes({
     type: 'foo',
     children: [
       { type: 'bar' }
     ]
   })
 
-  const dnode = snode.map(node => node.clone())
+  const tree2 = tree1.map(node => node.clone())
 
-  t.not(dnode, snode)
-  t.deepEqual(dnode.value, snode.value)
-  t.is(dnode.children.length, snode.children.length)
-  t.not(dnode.at(0), snode.at(0))
-  t.deepEqual(dnode.at(0).value, snode.at(0).value)
+  t.not(tree2, tree1)
+  t.deepEqual(tree2.value, tree1.value)
+  t.is(tree2.children.length, tree1.children.length)
+  t.not(tree2.at(0), tree1.at(0))
+  t.deepEqual(tree2.at(0).value, tree1.at(0).value)
 })
 
 test('inplace modify nodes', t => {
-  const snode = grapes({
+  const tree1 = grapes({
     type: 'foo',
     children: [
       { type: 'bar' }
     ]
   })
 
-  const dnode = snode.map(node => {
+  const tree2 = tree1.map(node => {
     let overrides
-
     if ('foo' === node.value.type) {
       overrides = { type: 'baz' }
     }
-
-    if ('bar' === node.value.type) {
+    else if ('bar' === node.value.type) {
       overrides = { type: 'qux' }
     }
-
-    return node.clone(overrides)
+    return node.cloneWith(overrides)
   })
 
-  t.is(dnode.value.type, 'baz')
-  t.is(dnode.at(0).value.type, 'qux')
+  t.is(tree2.value.type, 'baz')
+  t.is(tree2.at(0).value.type, 'qux')
 })
 
 test('strip node when null is returned', t => {
-  const snode = grapes({
+  const tree1 = grapes({
     type: 'foo',
     children: [
       { type: 'bar' },
@@ -54,20 +51,20 @@ test('strip node when null is returned', t => {
     ]
   })
 
-  const dnode = snode.map(node => {
+  const tree2 = tree1.map(node => {
     if ('baz' === node.value.type) {
       return null
     }
     return node.clone()
   })
 
-  t.is(dnode.children.length, 2)
-  t.is(dnode.at(0).value.type, 'bar')
-  t.is(dnode.at(1).value.type, 'qux')
+  t.is(tree2.children.length, 2)
+  t.is(tree2.at(0).value.type, 'bar')
+  t.is(tree2.at(1).value.type, 'qux')
 })
 
 test('strip a node with all its children', t => {
-  const snode = grapes({
+  const tree1 = grapes({
     type: 'foo',
     children: [
       {
@@ -80,12 +77,12 @@ test('strip a node with all its children', t => {
     ]
   })
 
-  const dnode = snode.map(node => {
+  const tree2 = tree1.map(node => {
     if ('bar' === node.value.type) {
       return null
     }
     return node.clone()
   })
 
-  t.is(dnode.at(0).children.length, 0)
+  t.is(tree2.at(0).children.length, 0)
 })

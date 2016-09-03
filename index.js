@@ -1,7 +1,7 @@
 const Node = require('./lib/node')
 
 module.exports = function grapes(value) {
-  if ('object' === typeof value) {
+  if (null != value) {
     return Node.fromObject(value)
   }
   return new Node()

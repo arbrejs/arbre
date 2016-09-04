@@ -1,7 +1,7 @@
 import test from 'ava'
 import { Node } from '../'
 
-test('create a tree from object', t => {
+test('create a tree', t => {
   const node = Node.fromObject({
     type: 'foo',
     children: [

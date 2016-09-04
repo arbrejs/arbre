@@ -21,4 +21,4 @@ test('filter using given predicate', t => {
   t.is(dnode.at(1).value.type, 'bar')
 })
 
-test.todo('hoist orphan children')
+// test.todo('hoist orphan children')

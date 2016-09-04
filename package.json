@@ -1,13 +1,14 @@
 {
   "name": "grapes",
   "version": "0.0.0",
-  "description": "Versioned trees for green thumbs",
+  "description": "Generic tree library for wine lovers.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/grapes",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "lib/"
   ],
   "scripts": {
     "lint": "eslint {,lib/,test/}*.js",
@@ -22,7 +23,16 @@
     "test",
     "check-coverage"
   ],
-  "keywords": [],
+  "keywords": [
+    "tree",
+    "node",
+    "manipulation",
+    "algorithm",
+    "traversal",
+    "walk",
+    "depth first",
+    "breath first"
+  ],
   "dependencies": {
     "clone": "^1.0.2",
     "deep-assign": "^2.0.0",

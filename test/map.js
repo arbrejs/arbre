@@ -1,48 +1,35 @@
 import test from 'ava'
 import grapes from '../'
 
-test('create a deep copy', t => {
-  const tree1 = grapes({
-    type: 'foo',
-    children: [
-      { type: 'bar' }
-    ]
-  })
-
-  const tree2 = tree1.map(node => node.clone())
-
-  t.not(tree2, tree1)
-  t.deepEqual(tree2.value, tree1.value)
-  t.is(tree2.children.length, tree1.children.length)
-  t.not(tree2.at(0), tree1.at(0))
-  t.deepEqual(tree2.at(0).value, tree1.at(0).value)
+test('return itself', t => {
+  const tree1 = grapes()
+  const tree2 = tree1.map(node => node)
+  t.is(tree1, tree2)
 })
 
-test('inplace modify nodes', t => {
-  const tree1 = grapes({
+test('mutate nodes', t => {
+  const tree = grapes({
     type: 'foo',
     children: [
       { type: 'bar' }
     ]
   })
 
-  const tree2 = tree1.map(node => {
-    let overrides
+  tree.map(node => {
     if ('foo' === node.value.type) {
-      overrides = { type: 'baz' }
+      node.value.type = 'baz'
     }
     else if ('bar' === node.value.type) {
-      overrides = { type: 'qux' }
+      node.value.type = 'qux'
     }
-    return node.cloneWith(overrides)
   })
 
-  t.is(tree2.value.type, 'baz')
-  t.is(tree2.at(0).value.type, 'qux')
+  t.is(tree.value.type, 'baz')
+  t.is(tree.at(0).value.type, 'qux')
 })
 
-test('strip node when null is returned', t => {
-  const tree1 = grapes({
+test('remove node when null is returned', t => {
+  const tree = grapes({
     type: 'foo',
     children: [
       { type: 'bar' },
@@ -51,38 +38,9 @@ test('strip node when null is returned', t => {
     ]
   })
 
-  const tree2 = tree1.map(node => {
-    if ('baz' === node.value.type) {
-      return null
-    }
-    return node.clone()
-  })
+  tree.map(node => ('baz' === node.value.type ? null : node))
 
-  t.is(tree2.children.length, 2)
-  t.is(tree2.at(0).value.type, 'bar')
-  t.is(tree2.at(1).value.type, 'qux')
-})
-
-test('strip a node with all its children', t => {
-  const tree1 = grapes({
-    type: 'foo',
-    children: [
-      {
-        type: 'bar',
-        children: [
-          { type: 'baz' }
-        ]
-      },
-      { type: 'qux' }
-    ]
-  })
-
-  const tree2 = tree1.map(node => {
-    if ('bar' === node.value.type) {
-      return null
-    }
-    return node.clone()
-  })
-
-  t.is(tree2.at(0).children.length, 0)
+  t.is(tree.children.length, 2)
+  t.is(tree.at(0).value.type, 'bar')
+  t.is(tree.at(1).value.type, 'qux')
 })

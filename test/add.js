@@ -1,23 +1,23 @@
 import test from 'ava'
-import grapes, { Node } from '../'
+import { Node } from '../'
 
 test('return the new child', t => {
-  const tree = grapes()
+  const tree = new Node()
   const node = tree.add(1)
 
   t.is(tree.at(0), node)
 })
 
 test('add a node', t => {
-  const tree = grapes()
-  tree.add(grapes(1))
+  const tree = new Node()
+  tree.add(new Node(1))
 
   t.true(tree.at(0) instanceof Node)
   t.is(tree.at(0).value, 1)
 })
 
 test('add a value', t => {
-  const tree = grapes()
+  const tree = new Node()
   tree.add(1)
 
   t.true(tree.at(0) instanceof Node)
@@ -25,7 +25,7 @@ test('add a value', t => {
 })
 
 test('move an existing node', t => {
-  const tree = grapes()
+  const tree = new Node()
   const node = tree.add(1).add(2)
   tree.add(node)
 
@@ -34,7 +34,7 @@ test('move an existing node', t => {
 })
 
 test('do not add itself', t => {
-  const tree = grapes()
+  const tree = new Node()
   const node = tree.add(tree)
 
   t.is(tree, node)

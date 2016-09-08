@@ -1,6 +1,6 @@
-const Node = require('./lib/node')
+import Node from './lib/node'
 
-module.exports = function grapes(value) {
+export default function grapes(value) {
   if (null != value) {
     if ('object' !== typeof value) {
       return new Node(value)
@@ -10,4 +10,4 @@ module.exports = function grapes(value) {
   return new Node()
 }
 
-module.exports.Node = Node
+export { Node as Node }

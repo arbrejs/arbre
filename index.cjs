@@ -1,13 +1,32 @@
-import deepEqual from 'not-so-shallow'
-import deepAssign from 'deep-assign'
-import crawl from 'tree-crawl'
-import mutate from 'tree-mutate'
-import morph from 'tree-morph'
-import { cloneNode, addNode, removeNode } from './mutators'
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var deepEqual = _interopDefault(require('not-so-shallow'));
+var deepAssign = _interopDefault(require('deep-assign'));
+var crawl = _interopDefault(require('tree-crawl'));
+var mutate = _interopDefault(require('tree-mutate'));
+var morph = _interopDefault(require('tree-morph'));
+
+function cloneNode(node) {
+  return node.clone()
+}
+
+function addNode(node, parentNode) {
+  parentNode.add(node)
+}
+
+function removeNode(mutation, node, parentNode) {
+  if ('remove' === mutation) {
+    parentNode.remove(node)
+  }
+}
 
 const EMPTY_ARRAY = []
 
-export default class Node {
+class Node {
   constructor(value) {
     this.value = value
     this.parent = null
@@ -279,3 +298,16 @@ export default class Node {
     return Node.fromObject(JSON.parse(json))
   }
 }
+
+function grapes(value) {
+  if (null != value) {
+    if ('object' !== typeof value) {
+      return new Node(value)
+    }
+    return Node.fromObject(value)
+  }
+  return new Node()
+}
+
+exports['default'] = grapes;
+exports.Node = Node;

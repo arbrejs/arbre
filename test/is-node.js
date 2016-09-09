@@ -1,8 +1,9 @@
 import test from 'ava'
-import grapes, { Node } from '../'
+import seed from './helpers/seed'
+import { Node } from '../'
 
 test('return true if instance of node', t => {
-  const tree = grapes()
+  const tree = seed()
   t.true(Node.isNode(tree))
 })
 

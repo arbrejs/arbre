@@ -1,48 +1,47 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('return the removed node', t => {
-  const node = grapes()
-  const nodeAdded = node.add(1)
-  const nodeRemoved = node.remove(1)
-
+  const root = seed()
+  const nodeAdded = root.add('foo')
+  const nodeRemoved = root.remove('foo')
   t.is(nodeAdded, nodeRemoved)
 })
 
 test('remove a child', t => {
-  const node = grapes()
-  const childNode = node.add(1)
-  node.remove(childNode)
+  const root = seed()
+  const childNode = root.add('foo')
+  root.remove(childNode)
 
   t.true(childNode.isRoot)
-  t.is(node.length, 0)
+  t.is(root.length, 0)
 })
 
 test('remove a child by value', t => {
-  const node = grapes()
-  const childNode = node.add(1)
-  node.remove(1)
+  const root = seed()
+  const childNode = root.add('foo')
+  root.remove('foo')
 
   t.true(childNode.isRoot)
-  t.is(node.length, 0)
+  t.is(root.length, 0)
 })
 
 test('remove the first child found with the given value', t => {
-  const node = grapes()
-  const childNode = node.add(1)
-  const otherNode = node.add(1)
-  node.remove(1)
+  const root = seed()
+  const childNode = root.add('foo')
+  const otherNode = root.add('foo')
+  root.remove('foo')
 
   t.true(childNode.isRoot)
-  t.is(node.length, 1)
-  t.is(node.at(0), otherNode)
+  t.is(root.length, 1)
+  t.is(root.at(0), otherNode)
 })
 
 test('remove itself when no node is specified', t => {
-  const node = grapes()
-  const childNode = node.add(1)
+  const root = seed()
+  const childNode = root.add('foo')
   childNode.remove()
 
   t.true(childNode.isRoot)
-  t.is(node.length, 0)
+  t.is(root.length, 0)
 })

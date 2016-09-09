@@ -1,12 +1,12 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('return the last child', t => {
-  const tree = grapes({ children: [ { type: 'foo' } ] })
-  t.is(tree.lastChild.value.type, 'foo')
+  const tree = seed(null, 'foo')
+  t.is(tree.lastChild.value, 'foo')
 })
 
 test('return undefined if no children', t => {
-  const tree = grapes()
+  const tree = seed()
   t.is(tree.lastChild, undefined)
 })

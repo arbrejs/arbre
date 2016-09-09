@@ -1,15 +1,16 @@
 import test from 'ava'
+import seed from './helpers/seed'
 import { Node } from '../'
 
 test('return the new child', t => {
-  const tree = new Node()
+  const tree = seed()
   const node = tree.add(1)
 
   t.is(tree.at(0), node)
 })
 
 test('add a node', t => {
-  const tree = new Node()
+  const tree = seed()
   tree.add(new Node(1))
 
   t.true(tree.at(0) instanceof Node)
@@ -17,7 +18,7 @@ test('add a node', t => {
 })
 
 test('add a value', t => {
-  const tree = new Node()
+  const tree = seed()
   tree.add(1)
 
   t.true(tree.at(0) instanceof Node)
@@ -25,7 +26,7 @@ test('add a value', t => {
 })
 
 test('move an existing node', t => {
-  const tree = new Node()
+  const tree = seed()
   const node = tree.add(1).add(2)
   tree.add(node)
 
@@ -34,7 +35,7 @@ test('move an existing node', t => {
 })
 
 test('do not add itself', t => {
-  const tree = new Node()
+  const tree = seed()
   const node = tree.add(tree)
 
   t.is(tree, node)

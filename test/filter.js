@@ -1,24 +1,17 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('filter using given predicate', t => {
-  const tree = grapes({
-    type: 'foo',
-    children: [
-      { type: 'bar' },
-      { type: 'baz' },
-      { type: 'bar' }
-    ]
-  })
+  const root = seed('foo', 'bar', 'baz', 'bar')
 
-  tree.filter(node => (
-    'foo' === node.value.type ||
-    'bar' === node.value.type
+  root.filter(node => (
+    'foo' === node.value ||
+    'bar' === node.value
   ))
 
-  t.is(tree.children.length, 2)
-  t.is(tree.at(0).value.type, 'bar')
-  t.is(tree.at(1).value.type, 'bar')
+  t.is(root.children.length, 2)
+  t.is(root.at(0).value, 'bar')
+  t.is(root.at(1).value, 'bar')
 })
 
 test.todo('hoist orphan children')

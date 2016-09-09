@@ -1,31 +1,21 @@
 import test from 'ava'
-import grapes, { Node } from '../'
+import seed from './helpers/seed'
 
 test('insert after the given node', t => {
-  const node = grapes({
-    type: 'foo',
-    children: [
-      { type: 'bar' },
-      { type: 'qux' }
-    ]
-  })
+  const root = seed('foo', 'bar', 'qux')
+  const node = seed('baz')
+  node.insertAfter(root.at(0))
 
-  const nnode = new Node({ type: 'baz' })
-  nnode.insertAfter(node.at(0))
-
-  t.is(node.children.length, 3)
-  t.is(node.at(0).value.type, 'bar')
-  t.is(node.at(1).value.type, 'baz')
-  t.is(node.at(2).value.type, 'qux')
+  t.is(root.children.length, 3)
+  t.is(root.at(0).value, 'bar')
+  t.is(root.at(1).value, 'baz')
+  t.is(root.at(2).value, 'qux')
 })
 
 test('ignore root', t => {
-  const node = grapes({
-    type: 'foo'
-  })
+  const root = seed('foo')
+  const node = seed('bar')
+  node.insertAfter(root)
 
-  const nnode = new Node({ type: 'bar' })
-  nnode.insertAfter(node)
-
-  t.is(node.children.length, 0)
+  t.is(root.children.length, 0)
 })

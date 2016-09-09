@@ -1,5 +1,5 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('convert a tree to JSON', t => {
   const obj = {
@@ -8,7 +8,7 @@ test('convert a tree to JSON', t => {
       { type: 'bar' }
     ]
   }
-  const tree = grapes(obj)
+  const tree = seed(obj)
 
   t.deepEqual(JSON.stringify(obj, null, 2), tree.toJSON())
 })
@@ -30,7 +30,7 @@ test('convert a nested tree to JSON', t => {
       }
     ]
   }
-  const tree = grapes(obj)
+  const tree = seed(obj)
 
   t.deepEqual(JSON.stringify(obj, null, 2), tree.toJSON())
 })
@@ -54,7 +54,7 @@ test('convert a complex tree to JSON', t => {
       }
     ]
   }
-  const tree = grapes(obj)
+  const tree = seed(obj)
 
   t.deepEqual(JSON.stringify(obj, null, 2), tree.toJSON())
 })

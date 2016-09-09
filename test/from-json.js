@@ -2,20 +2,20 @@ import test from 'ava'
 import { Node } from '../'
 
 test('create a tree', t => {
-  const tree = Node.fromJSON(JSON.stringify({
+  const root = Node.fromJSON(JSON.stringify({
     type: 'foo',
     children: [
       { type: 'bar' }
     ]
   }))
 
-  t.is(tree.value.type, 'foo')
-  t.is(Object.keys(tree.value).length, 1)
-  t.deepEqual(tree.at(0).value.type, 'bar')
+  t.is(root.value.type, 'foo')
+  t.is(Object.keys(root.value).length, 1)
+  t.deepEqual(root.at(0).value.type, 'bar')
 })
 
 test('create a nested tree', t => {
-  const tree = Node.fromJSON(JSON.stringify({
+  const root = Node.fromJSON(JSON.stringify({
     type: 'foo',
     children: [
       {
@@ -32,14 +32,14 @@ test('create a nested tree', t => {
     ]
   }))
 
-  t.is(tree.value.type, 'foo')
-  t.deepEqual(tree.at(0).value.type, 'bar')
-  t.deepEqual(tree.at(0, 0).value.type, 'baz')
-  t.deepEqual(tree.at(0, 0, 0).value.type, 'qux')
+  t.is(root.value.type, 'foo')
+  t.deepEqual(root.at(0).value.type, 'bar')
+  t.deepEqual(root.at(0, 0).value.type, 'baz')
+  t.deepEqual(root.at(0, 0, 0).value.type, 'qux')
 })
 
 test('create a complex tree', t => {
-  const tree = Node.fromJSON(JSON.stringify({
+  const root = Node.fromJSON(JSON.stringify({
     type: 'foo',
     children: [
       {
@@ -58,10 +58,10 @@ test('create a complex tree', t => {
     ]
   }))
 
-  t.is(tree.value.type, 'foo')
-  t.deepEqual(tree.at(0).value.type, 'bar')
-  t.deepEqual(tree.at(0, 0).value.type, 'baz')
-  t.deepEqual(tree.at(0, 1).value.type, 'qux')
-  t.deepEqual(tree.at(1).value.type, 'quux')
-  t.deepEqual(tree.at(1, 0).value.type, 'corge')
+  t.is(root.value.type, 'foo')
+  t.deepEqual(root.at(0).value.type, 'bar')
+  t.deepEqual(root.at(0, 0).value.type, 'baz')
+  t.deepEqual(root.at(0, 1).value.type, 'qux')
+  t.deepEqual(root.at(1).value.type, 'quux')
+  t.deepEqual(root.at(1, 0).value.type, 'corge')
 })

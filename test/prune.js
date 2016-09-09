@@ -1,10 +1,10 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('return an array of removed nodes', t => {
-  const root = grapes()
-  const firstNode = root.add(1)
-  const lastNode = root.add(2)
+  const root = seed()
+  const firstNode = root.add('foo')
+  const lastNode = root.add('bar')
   const nodes = root.prune()
 
   t.true(Array.isArray(nodes))
@@ -13,9 +13,9 @@ test('return an array of removed nodes', t => {
 })
 
 test('remove all children', t => {
-  const root = grapes()
-  const firstNode = root.add(1)
-  const lastNode = root.add(2)
+  const root = seed()
+  const firstNode = root.add('foo')
+  const lastNode = root.add('bar')
   root.prune()
 
   t.is(root.length, 0)

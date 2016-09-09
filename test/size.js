@@ -1,25 +1,7 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('return the total number of nodes', t => {
-  const tree = grapes({
-    type: 'foo',
-    children: [
-      {
-        type: 'bar',
-        children: [
-          { type: 'baz' },
-          { type: 'qux' }
-        ]
-      },
-      {
-        type: 'quux',
-        children: [
-          { type: 'corge' }
-        ]
-      }
-    ]
-  })
-
-  t.is(tree.size, 6)
+  const root = seed('foo', ['bar', ['baz', 'qux']], ['quux', ['corge']])
+  t.is(root.size, 6)
 })

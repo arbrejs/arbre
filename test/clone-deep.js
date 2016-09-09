@@ -1,16 +1,10 @@
 import test from 'ava'
-import { Node } from '../'
+import seed from './helpers/seed'
 
 test('deep clone a node', t => {
-  const node = new Node({
-    type: 'foo',
-    children: [
-      { type: 'bar' },
-      { type: 'baz' }
-    ]
-  })
+  const node = seed('foo', 'bar', 'baz')
   const cloneNode = node.cloneDeep()
 
-  t.not(node, cloneNode)
-  t.deepEqual(node, cloneNode)
+  t.not(cloneNode, node)
+  t.deepEqual(cloneNode, node)
 })

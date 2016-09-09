@@ -1,18 +1,20 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
-test('deep clone a node value', t => {
-  const node = grapes({ deep: { property: { bar: 'baz' }}})
-  const cloneNode = node.clone()
+test.todo('should deep clone, shallow clone should be done via copy')
 
-  t.not(node, cloneNode)
-  t.deepEqual(node.value, cloneNode.value)
-})
-
-test('clone a node primitive value', t => {
-  const node = grapes(1)
-  const cloneNode = node.clone()
-
-  t.not(node, cloneNode)
-  t.is(node.value, cloneNode.value)
-})
+// test('deep clone a tree value', t => {
+//   const tree = seed('foo', { deep: { property: { bar: 'baz' }}})
+//   const cloneTree = tree.clone()
+//
+//   t.not(cloneTree, tree)
+//   t.deepEqual(cloneTree.at(0).value.deep, tree.at(0).value.deep)
+// })
+//
+// test('clone a tree primitive value', t => {
+//   const tree = seed('foo')
+//   const cloneTree = tree.clone()
+//
+//   t.not(cloneTree, tree)
+//   t.is(cloneTree.value, tree.value)
+// })

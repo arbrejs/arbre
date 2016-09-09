@@ -1,50 +1,34 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('return itself', t => {
-  const tree1 = grapes()
-  const tree2 = tree1.mapValues(node => node)
-  t.is(tree1, tree2)
+  const root1 = seed()
+  const root2 = root1.mapValues(node => node)
+  t.is(root1, root2)
 })
 
-test('mutate values', t => {
-  const tree = grapes({
-    type: 'foo',
-    children: [
-      { type: 'bar' }
-    ]
-  })
+test.skip('mutate values', t => {
+  const root = seed('foo', 'bar')
 
-  tree.mapValues(value => {
-    if ('foo' === value.type) {
-      value.type = 'baz'
+  root.mapValues(value => {
+    if ('foo' === value) {
+      value = 'baz'
     }
-    else if ('bar' === value.type) {
-      value.type = 'qux'
+    else if ('bar' === value) {
+      value = 'qux'
     }
   })
 
-  t.is(tree.value.type, 'baz')
-  t.is(tree.at(0).value.type, 'qux')
+  t.is(root.value, 'baz')
+  t.is(root.at(0).value, 'qux')
 })
 
 test('skip node when null is returned', t => {
-  const tree = grapes({
-    type: 'foo',
-    children: [
-      {
-        type: 'bar',
-        children: [
-          { type: 'baz' }
-        ]
-      },
-      { type: 'qux' }
-    ]
-  })
+  const root = seed('foo', ['bar', ['baz']], 'qux')
 
-  tree.mapValues(value => ('baz' === value.type ? null : value))
+  root.mapValues(value => ('baz' === value ? null : value))
 
-  t.is(tree.children.length, 2)
-  t.is(tree.at(0).value.type, 'bar')
-  t.is(tree.at(1).value.type, 'qux')
+  t.is(root.children.length, 2)
+  t.is(root.at(0).value, 'bar')
+  t.is(root.at(1).value, 'qux')
 })

@@ -1,19 +1,12 @@
 import test from 'ava'
-import grapes from '../'
+import seed from './helpers/seed'
 
 test('return next sibling', t => {
-  const tree = grapes({
-    children: [
-      { type: 'foo' },
-      { type: 'bar' },
-      { type: 'baz' }
-    ]
-  })
-
-  t.is(tree.at(1).nextSibling.value.type, 'baz')
+  const root = seed(null, 'foo', 'bar', 'baz')
+  t.is(root.at(1).nextSibling.value, 'baz')
 })
 
 test('return undefined if no next sibling', t => {
-  const tree = grapes()
-  t.is(tree.nextSibling, undefined)
+  const root = seed()
+  t.is(root.nextSibling, undefined)
 })

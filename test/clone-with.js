@@ -1,18 +1,10 @@
 import test from 'ava'
-import { Node } from '../'
+import seed from './helpers/seed'
 
 test('clone and merge given value', t => {
-  const node = new Node({
-    type: 'foo',
-    deep: {
-      property: {
-        bar: 'baz'
-      }
-    }
-  })
+  const node = seed({ deep: { property: { bar: 'baz' }}})
   const cloneNode = node.cloneWith({ deep: { property: { bar: 'qux' }}})
 
-  t.not(node, cloneNode)
-  t.is(cloneNode.value.type, 'foo')
+  t.not(cloneNode, node)
   t.is(cloneNode.value.deep.property.bar, 'qux')
 })

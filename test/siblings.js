@@ -16,5 +16,6 @@ test('return an array of siblings', t => {
 
 test('return an empty array if no siblings', t => {
   const root = seed()
+
   t.deepEqual(root.siblings, [])
 })

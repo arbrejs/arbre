@@ -5,6 +5,7 @@ test('return the removed node', t => {
   const root = seed()
   const nodeAdded = root.add('foo')
   const nodeRemoved = root.remove('foo')
+
   t.is(nodeAdded, nodeRemoved)
 })
 

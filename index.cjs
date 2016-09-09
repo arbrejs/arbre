@@ -47,6 +47,7 @@ class Node {
     if (EMPTY_ARRAY === this.children) {
       this.children = []
     }
+
     this.children.push(node)
     node.parent = this
 
@@ -145,10 +146,10 @@ class Node {
   }
 
   equals(node) {
-    // Shortcut for identity.
+    // shortcut for identity
     if (this === node) return true
 
-    // Nodes are equal if their values are equal
+    // nodes are equal if their values are equal
     return deepEqual(this.value, node.value)
   }
 
@@ -171,7 +172,7 @@ class Node {
   find(value) {
     let foundNode = null
 
-    // Traverse the entire tree to find the node and return it
+    // traverse the entire tree to find the node and return it
     this.traverse((node, context) => {
       if (node === this) return
       if (node.value === value) {
@@ -250,6 +251,7 @@ class Node {
 
   get siblings() {
     if (this.isRoot) return []
+
     return this.parent.children.reduce((siblings, child) => {
       if (child !== this) {
         siblings.push(child)

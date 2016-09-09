@@ -3,7 +3,6 @@ import seed from './helpers/seed'
 
 test('insert all children just after itself', t => {
   const root = seed('foo', ['bar', ['baz']], 'qux')
-
   root.at(0).hoist()
 
   t.is(root.children.length, 3)
@@ -14,5 +13,6 @@ test('insert all children just after itself', t => {
 
 test('ignore root', t => {
   const root = seed('foo')
+
   t.notThrows(() => root.hoist())
 })

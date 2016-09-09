@@ -14,6 +14,7 @@ test('insert at the given index', t => {
 
 test('ignore an non-existing parent', t => {
   const node = seed()
+
   t.notThrows(() => node.insertAt())
 })
 

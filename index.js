@@ -10,4 +10,4 @@ export default function arbre(value) {
   return new Node()
 }
 
-export { Node as Node }
+arbre.Node = Node

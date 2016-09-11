@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var clone = _interopDefault(require('clone'));
@@ -325,5 +323,6 @@ function arbre(value) {
   return new Node()
 }
 
-exports['default'] = arbre;
-exports.Node = Node;
+arbre.Node = Node
+
+module.exports = arbre;

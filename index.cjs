@@ -4,12 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var deepEqual = _interopDefault(require('not-so-shallow'));
 var clone = _interopDefault(require('clone'));
 var crawl = _interopDefault(require('tree-crawl'));
-var mutate = _interopDefault(require('tree-mutate'));
-var morph = _interopDefault(require('tree-morph'));
+var deepEqual = _interopDefault(require('not-so-shallow'));
 var isPlainObject = _interopDefault(require('is-plain-obj'));
+var morph = _interopDefault(require('tree-morph'));
+var mutate = _interopDefault(require('tree-mutate'));
 
 function cloneNode(node) {
   return node.clone()
@@ -126,8 +126,6 @@ class Node {
 
     parentNode.children.splice(index, 0, this)
     this.parent = parentNode
-
-    return true
   }
 
   insertAfter(node) {
@@ -165,19 +163,14 @@ class Node {
     if (null == node || this === node || node.isRoot) return this
 
     this.insertAt(node.parent, node.index)
-    node.remove()
+    return node.remove()
   }
 
   prune() {
-    const out = []
-
     while (0 !== this.children.length) {
       const node = this.children.shift()
       node.parent = null
-      out.push(node)
     }
-
-    return out
   }
 
   hoist() {
@@ -322,7 +315,7 @@ class Node {
   }
 }
 
-function grapes(value) {
+function arbre(value) {
   if (null != value) {
     if ('object' !== typeof value) {
       return new Node(value)
@@ -332,5 +325,5 @@ function grapes(value) {
   return new Node()
 }
 
-exports['default'] = grapes;
+exports['default'] = arbre;
 exports.Node = Node;

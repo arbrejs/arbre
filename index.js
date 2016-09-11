@@ -1,6 +1,6 @@
 import Node from './lib/node'
 
-export default function grapes(value) {
+export default function arbre(value) {
   if (null != value) {
     if ('object' !== typeof value) {
       return new Node(value)

@@ -47,6 +47,14 @@ test('remove itself when no node is specified', t => {
   t.is(node.length, 0)
 })
 
+test('ignore orphan node', t => {
+  const node = seed()
+  const child = node.add('foo')
+  child.remove()
+
+  t.notThrows(() => node.remove(child))
+})
+
 test('ignore when self-removing root', t => {
   const node = seed()
 

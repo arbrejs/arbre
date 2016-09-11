@@ -1,10 +1,10 @@
 {
-  "name": "grapes",
+  "name": "arbre",
   "version": "0.0.0",
-  "description": "Generic tree library for wine lovers.",
+  "description": "Generic tree library nature lovers.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
-  "repository": "ngryman/grapes",
+  "repository": "ngryman/arbre",
   "main": "index.cjs",
   "jsnext:main": "index.js",
   "engines": {
@@ -12,7 +12,8 @@
   },
   "files": [
     "index.js",
-    "index.cjs"
+    "index.cjs",
+    "lib/"
   ],
   "scripts": {
     "lint": "meta lint",

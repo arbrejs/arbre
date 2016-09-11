@@ -1,27 +1,27 @@
-# grapes
+# arbre
 
 > Versioned trees for green thumbs
 
 [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
 
-[travis-image]: https://img.shields.io/travis/ngryman/grapes.svg?style=flat
-[travis-url]: https://travis-ci.org/ngryman/grapes
-[codecov-image]: https://img.shields.io/codecov/c/github/ngryman/grapes.svg
-[codecov-url]: https://codecov.io/github/ngryman/grapes
+[travis-image]: https://img.shields.io/travis/ngryman/arbre.svg?style=flat
+[travis-url]: https://travis-ci.org/ngryman/arbre
+[codecov-image]: https://img.shields.io/codecov/c/github/ngryman/arbre.svg
+[codecov-url]: https://codecov.io/github/ngryman/arbre
 
 
-**grapes** lets you ...
+**arbre** lets you ...
 
 ## Install
 
 ```bash
-npm install --save grapes
+npm install --save arbre
 ```
 
 ## Usage
 
 ```javascript
-const grapes = require('grapes')
+const arbre = require('arbre')
 
 ```
 

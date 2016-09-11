@@ -2,13 +2,15 @@ import test from 'ava'
 import seed from './helpers/seed'
 
 test('return the first child', t => {
-  const root = seed(null, 'foo')
+  const node = seed(null, 'foo')
+  const first = node.firstChild
 
-  t.is(root.firstChild.value, 'foo')
+  t.is(first, node.at(0))
 })
 
 test('return undefined if no children', t => {
-  const root = seed()
+  const node = seed()
+  const first = node.firstChild
 
-  t.is(root.firstChild, undefined)
+  t.is(first, undefined)
 })

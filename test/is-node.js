@@ -1,15 +1,15 @@
 import test from 'ava'
 import seed from './helpers/seed'
-import { Node } from '../'
+import Node from '../lib/node'
 
 test('return true if instance of node', t => {
-  const tree = seed()
+  const node = seed()
 
-  t.true(Node.isNode(tree))
+  t.true(Node.isNode(node))
 })
 
-test('return false if no instance of node', t => {
-  const alike = { value: null, parent: null, children: [] }
+test('return false if not instance of node', t => {
+  const obj = { value: null, parent: null, children: [] }
 
-  t.false(Node.isNode(alike))
+  t.false(Node.isNode(obj))
 })

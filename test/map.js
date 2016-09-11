@@ -2,25 +2,29 @@ import test from 'ava'
 import seed from './helpers/seed'
 
 test('return itself', t => {
-  const root1 = seed()
-  const root2 = root1.map(node => node)
+  const node1 = seed()
+  const node2 = node1.map(node => node)
 
-  t.is(root1, root2)
+  t.is(node1, node2)
 })
 
 test('mutate nodes', t => {
-  const root = seed('foo', 'bar')
-  root.map(node => {
-    if ('foo' === node.value) {
-      node.value = 'baz'
-    }
-    else if ('bar' === node.value) {
-      node.value = 'qux'
-    }
+  const node = seed({ type: 'foo' }, { type: 'bar' })
+  node.map(node => {
+    node.value.type = 'baz'
   })
 
-  t.is(root.value, 'baz')
-  t.is(root.at(0).value, 'qux')
+  t.deepEqual(node, seed({ type: 'baz' }, { type: 'baz' }))
+})
+
+test('replace nodes when new nodes are returned', t => {
+  const node = seed('foo', 'bar')
+  const newNode = node.map(node => {
+    if ('bar' === node.value) return seed('baz', 'qux', 'corge')
+  })
+
+  t.is(newNode, node)
+  t.deepEqual(node, seed('foo', ['baz', 'qux', 'corge']))
 })
 
 test('remove node when null is returned', t => {

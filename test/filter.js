@@ -1,13 +1,25 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('filter using given predicate', t => {
-  const root = seed('foo', 'bar', 'baz', 'bar')
-  root.filter(node => ('foo' === node.value || 'bar' === node.value))
+test('filter with predicate', t => {
+  const node = seed('foo', 'bar', 'baz', 'qux')
+  const filtered = node.filter(node => ('baz' !== node.value))
 
-  t.is(root.children.length, 2)
-  t.is(root.at(0).value, 'bar')
-  t.is(root.at(1).value, 'bar')
+  t.is(filtered, node)
+  t.deepEqual(filtered, seed('foo', 'bar', 'qux'))
 })
 
-test.todo('hoist orphan children')
+test('return null if no node statisfy predicate', t => {
+  const node = seed('foo', 'bar', 'baz', 'qux')
+  const filtered = node.filter(node => false)
+
+  t.is(filtered, null)
+})
+
+test('do nothing if no predicate', t => {
+  const node = seed('foo', 'bar', 'baz', 'qux')
+  const filtered = node.filter()
+
+  t.is(filtered, node)
+  t.deepEqual(filtered, node)
+})

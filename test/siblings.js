@@ -1,6 +1,6 @@
 import test from 'ava'
 import seed from './helpers/seed'
-import { Node } from '../'
+import Node from '../lib/node'
 
 test('return an array of siblings', t => {
   const root = seed(null, 'foo', 'bar', 'baz')

@@ -2,14 +2,14 @@ import test from 'ava'
 import seed from './helpers/seed'
 
 test('check child presence', t => {
-  const root = seed(null, 1)
-  const node = root.at(0)
+  const parent = seed(null, 'foo')
+  const node = parent.at(0)
 
-  t.is(root.has(node), true)
+  t.is(parent.has(node), true)
 })
 
 test('check child presence by value', t => {
-  const root = seed(null, 1)
+  const parent = seed(null, 'foo')
 
-  t.is(root.has(1), true)
+  t.is(parent.has('foo'), true)
 })

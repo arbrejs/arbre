@@ -1,48 +1,58 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('return the removed node', t => {
-  const root = seed()
-  const nodeAdded = root.add('foo')
-  const nodeRemoved = root.remove('foo')
+test('remove a child', t => {
+  const node = seed()
+  const child = node.add('foo')
+  node.remove(child)
 
-  t.is(nodeAdded, nodeRemoved)
+  t.true(child.isRoot)
+  t.is(node.length, 0)
 })
 
-test('remove a child', t => {
-  const root = seed()
-  const childNode = root.add('foo')
-  root.remove(childNode)
+test('return the removed node', t => {
+  const node = seed()
+  const added = node.add('foo')
+  const removed = node.remove('foo')
 
-  t.true(childNode.isRoot)
-  t.is(root.length, 0)
+  t.is(added, removed)
 })
 
 test('remove a child by value', t => {
-  const root = seed()
-  const childNode = root.add('foo')
-  root.remove('foo')
+  const node = seed()
+  const child = node.add('foo')
+  node.remove('foo')
 
-  t.true(childNode.isRoot)
-  t.is(root.length, 0)
+  t.true(child.isRoot)
+  t.is(node.length, 0)
 })
 
-test('remove the first child found with the given value', t => {
-  const root = seed()
-  const childNode = root.add('foo')
-  const otherNode = root.add('foo')
-  root.remove('foo')
+test('remove first child found with given value', t => {
+  const node = seed()
+  const child = node.add('foo')
+  const otherNode = node.add('foo')
+  node.remove('foo')
 
-  t.true(childNode.isRoot)
-  t.is(root.length, 1)
-  t.is(root.at(0), otherNode)
+  t.true(child.isRoot)
+  t.is(node.length, 1)
+  t.is(node.at(0), otherNode)
 })
 
 test('remove itself when no node is specified', t => {
-  const root = seed()
-  const childNode = root.add('foo')
-  childNode.remove()
+  const node = seed()
+  const child = node.add('foo')
+  child.remove()
 
-  t.true(childNode.isRoot)
-  t.is(root.length, 0)
+  t.true(child.isRoot)
+  t.is(node.length, 0)
+})
+
+test('ignore when self-removing root', t => {
+  const node = seed()
+
+  t.notThrows(() => node.remove())
+})
+
+test('ignore no argument', t => {
+  t.notThrows(() => seed().remove())
 })

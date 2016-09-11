@@ -1,8 +1,8 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('return the total number of nodes', t => {
-  const root = seed('foo', ['bar', ['baz', 'qux']], ['quux', ['corge']])
+test('return total number of nodes', t => {
+  const node = seed('foo', ['bar', ['baz', 'qux']], ['quux', 'corge'])
 
-  t.is(root.size, 6)
+  t.is(node.size, 6)
 })

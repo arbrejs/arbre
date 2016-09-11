@@ -1,60 +1,28 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('convert a tree to an object', t => {
-  const obj = {
+test('convert to object', t => {
+  const node = seed({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })
+  const json = node.toObject()
+
+  t.deepEqual(json, {
     type: 'foo',
     children: [
-      { type: 'bar' }
+      { type: 'bar' },
+      { type: 'baz' }
     ]
-  }
-  const tree = seed(obj)
-
-  t.deepEqual(obj, tree.toObject())
+  })
 })
 
-test('convert a nested tree to an object', t => {
-  const obj = {
-    type: 'foo',
+test('add a value property for non-plain objects', t => {
+  const node = seed('foo', 'bar', 'baz')
+  const json = node.toObject()
+
+  t.deepEqual(json, {
+    value: 'foo',
     children: [
-      {
-        type: 'bar',
-        children: [
-          {
-            type: 'baz',
-            children: [
-              { type: 'qux' }
-            ]
-          }
-        ]
-      }
+      { value: 'bar' },
+      { value: 'baz' }
     ]
-  }
-  const tree = seed(obj)
-
-  t.deepEqual(obj, tree.toObject())
-})
-
-test('convert a complex tree to an object', t => {
-  const obj = {
-    type: 'foo',
-    children: [
-      {
-        type: 'bar',
-        children: [
-          { type: 'baz' },
-          { type: 'qux' }
-        ]
-      },
-      {
-        type: 'quux',
-        children: [
-          { type: 'corge' }
-        ]
-      }
-    ]
-  }
-  const tree = seed(obj)
-
-  t.deepEqual(obj, tree.toObject())
+  })
 })

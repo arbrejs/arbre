@@ -1,22 +1,13 @@
-import { Node } from '../..'
+import Node from '../../lib/node'
 
-export default function seed(root, ...items) {
-  return items.reduce((root, item) => {
-    let node
-
-    if (Array.isArray(item)) {
-      if (Array.isArray(item)) {
-        node = seed(item[0], ...item[1])
-      }
-      else {
-        node = seed(item[0], item[1])
-      }
-    }
-    else {
-      node = item
+export default function seed(node, ...children) {
+  return children.reduce((node, child) => {
+    if (Array.isArray(child)) {
+      child = seed(child.shift(), ...child)
     }
 
-    root.add(node)
-    return root
-  }, new Node(root))
+    node.add(child)
+
+    return node
+  }, new Node(node))
 }

@@ -1,14 +1,16 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('return index in the parent node', t => {
-  const root = seed(null, 'foo', 'bar', 'baz')
+test('return node index in parent node', t => {
+  const node = seed(null, 'foo', 'bar', 'baz')
 
-  t.is(root.at(1).index, 1)
+  for (let i = 0; i < 3; i++) {
+    t.is(node.at(i).index, i)
+  }
 })
 
 test('return -1 if no parent', t => {
-  const root = seed()
+  const node = seed()
 
-  t.is(root.index, -1)
+  t.is(node.index, -1)
 })

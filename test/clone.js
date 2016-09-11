@@ -1,20 +1,20 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test.todo('should deep clone, shallow clone should be done via copy')
+test('clone a node', t => {
+  const node = seed('foo')
+  const clone = node.clone()
 
-// test('deep clone a tree value', t => {
-//   const tree = seed('foo', { deep: { property: { bar: 'baz' }}})
-//   const cloneTree = tree.clone()
-//
-//   t.not(cloneTree, tree)
-//   t.deepEqual(cloneTree.at(0).value.deep, tree.at(0).value.deep)
-// })
-//
-// test('clone a tree primitive value', t => {
-//   const tree = seed('foo')
-//   const cloneTree = tree.clone()
-//
-//   t.not(cloneTree, tree)
-//   t.is(cloneTree.value, tree.value)
-// })
+  t.not(clone, node)
+  t.is(clone.value, node.value)
+})
+
+test('deep clone an object node value', t => {
+  const node = seed({ foo: { bar: [] }})
+  const clone = node.clone()
+
+  t.not(clone.value, node.value)
+  t.not(clone.value.foo, node.value.foo)
+  t.not(clone.value.foo.bar, node.value.foo.bar)
+  t.deepEqual(clone.value, node.value)
+})

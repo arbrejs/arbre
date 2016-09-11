@@ -1,24 +1,24 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('return an array of removed nodes', t => {
-  const root = seed()
-  const firstNode = root.add('foo')
-  const lastNode = root.add('bar')
-  const nodes = root.prune()
+test('remove all children', t => {
+  const node = seed()
+  const first = node.add('foo')
+  const last = node.add('bar')
+  node.prune()
 
-  t.true(Array.isArray(nodes))
-  t.is(nodes[0], firstNode)
-  t.is(nodes[1], lastNode)
+  t.is(node.length, 0)
+  t.true(first.isRoot)
+  t.true(last.isRoot)
 })
 
-test('remove all children', t => {
-  const root = seed()
-  const firstNode = root.add('foo')
-  const lastNode = root.add('bar')
-  root.prune()
+test('return an array of removed nodes', t => {
+  const node = seed()
+  const first = node.add('foo')
+  const last = node.add('bar')
+  const nodes = node.prune()
 
-  t.is(root.length, 0)
-  t.true(firstNode.isRoot)
-  t.true(lastNode.isRoot)
+  t.true(Array.isArray(nodes))
+  t.is(nodes[0], first)
+  t.is(nodes[1], last)
 })

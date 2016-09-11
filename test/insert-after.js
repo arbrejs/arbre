@@ -1,21 +1,40 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('insert after the given node', t => {
-  const root = seed('foo', 'bar', 'qux')
-  const node = seed('baz')
-  node.insertAfter(root.at(0))
+test('insert after a node', t => {
+  const node = seed('foo', 'bar', 'qux')
+  const after = node.at(0)
+  seed('baz').insertAfter(after)
 
-  t.is(root.children.length, 3)
-  t.is(root.at(0).value, 'bar')
-  t.is(root.at(1).value, 'baz')
-  t.is(root.at(2).value, 'qux')
+  t.deepEqual(node, seed('foo', 'bar', 'baz', 'qux'))
 })
 
-test('ignore root', t => {
-  const root = seed('foo')
-  const node = seed('bar')
-  node.insertAfter(root)
+test('ignore root node', t => {
+  const root = seed()
+  const insert = seed()
+  insert.insertAfter(root)
 
-  t.is(root.children.length, 0)
+  t.is(root.length, 0)
+  t.not(insert.parent, root)
+})
+
+test('do not insert after root node', t => {
+  const root = seed()
+  const insert = seed()
+  insert.insertAfter(root)
+
+  t.is(root.length, 0)
+  t.not(insert.parent, root)
+})
+
+test('do not insert itself', t => {
+  const node = seed()
+  node.insertAfter(node)
+
+  t.is(node.length, 0)
+  t.not(node.parent, node)
+})
+
+test('ignore no argument', t => {
+  t.notThrows(() => seed().insertAfter())
 })

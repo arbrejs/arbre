@@ -1,14 +1,14 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('return the number of children', t => {
-  const root = seed(null, 'foo', 'bar')
+test('return number of children', t => {
+  const node = seed(null, 'foo', 'bar')
 
-  t.is(root.length, 2)
+  t.is(node.length, 2)
 })
 
 test('return 0 when no children', t => {
-  const root = seed()
+  const node = seed()
 
-  t.is(root.length, 0)
+  t.is(node.length, 0)
 })

@@ -1,35 +1,39 @@
 import test from 'ava'
 import seed from './helpers/seed'
 
-test('insert at the given index', t => {
-  const root = seed('foo', 'bar', 'qux')
-  const node = seed('baz')
-  node.insertAt(root, 1)
+test('insert at given index', t => {
+  const node = seed('foo', 'bar', 'qux')
+  const insert = seed('baz')
+  insert.insertAt(node, 1)
 
-  t.is(root.children.length, 3)
-  t.is(root.at(0).value, 'bar')
-  t.is(root.at(1).value, 'baz')
-  t.is(root.at(2).value, 'qux')
+  t.deepEqual(node, seed('foo', 'bar', 'baz', 'qux'))
 })
 
-test('ignore an non-existing parent', t => {
-  const node = seed()
+test('ignore root node', t => {
+  const root = seed()
+  const insert = seed()
+  insert.insertAt(root, 0)
 
-  t.notThrows(() => node.insertAt())
+  t.is(root.length, 0)
+  t.not(insert.parent, root)
 })
 
 test('ignore out of bounds indices', t => {
-  const root = seed()
-  const node = root.add(1)
+  const node = seed()
 
-  t.notThrows(() => node.insertAt(root, -1))
-  t.notThrows(() => node.insertAt(root, 1))
+  t.notThrows(() => seed().insertAt(node, -1))
+  t.notThrows(() => seed().insertAt(node, 1))
+  t.is(node.length, 0)
 })
 
 test('do not insert itself', t => {
-  const root = seed()
-  const node = root.add(1)
+  const node = seed()
   node.insertAt(node, 0)
 
+  t.is(node.length, 0)
   t.not(node.parent, node)
+})
+
+test('ignore no argument', t => {
+  t.notThrows(() => seed().insertAt())
 })

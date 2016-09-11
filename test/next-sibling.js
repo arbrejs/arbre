@@ -2,13 +2,15 @@ import test from 'ava'
 import seed from './helpers/seed'
 
 test('return next sibling', t => {
-  const root = seed(null, 'foo', 'bar', 'baz')
+  const node = seed(null, 'foo', 'bar')
+  const next = node.at(0).nextSibling
 
-  t.is(root.at(1).nextSibling.value, 'baz')
+  t.is(next, node.at(1))
 })
 
 test('return undefined if no next sibling', t => {
-  const root = seed()
+  const node = seed()
+  const next = node.nextSibling
 
-  t.is(root.nextSibling, undefined)
+  t.is(next, undefined)
 })

@@ -9,7 +9,7 @@ test('insert children just after itself', t => {
   t.deepEqual(node, seed('foo', 'bar', 'baz', 'qux'))
 })
 
-test('ignore root node', t => {
+test('ignore orphan node', t => {
   const node = seed()
 
   t.notThrows(() => {

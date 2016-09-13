@@ -1,6 +1,6 @@
-import map from './map'
+import { map } from './map'
 
-export default function filter(node, predicate) {
-  if ('function' !== typeof predicate) return this
+export function filter(node, predicate) {
+  if ('function' !== typeof predicate) return null
   return map(node, node => (predicate(node) ? node : null))
 }

@@ -1,8 +1,12 @@
-export function layoutNode(mutation, node, parentNode, index) {
+export function layoutNode(mutation, node, parent, index) {
   if ('remove' === mutation) {
-    parentNode.remove(node)
+    parent.children.splice(index, 1)
+    node.parent = null
   }
   else if ('replace' === mutation) {
-    node.replace(parentNode.at(index))
+    const old = parent.children[index]
+    parent.children[index] = node
+    node.parent = old.parent
+    old.parent = null
   }
 }

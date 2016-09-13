@@ -1,6 +1,6 @@
-import map from './map'
+import { map } from './map'
 
-export default function mapValues(node, iteratee) {
+export function mapValues(node, iteratee) {
   return map(node, (node, context) => {
     const ret = iteratee(node.value)
     if (null === ret) return null

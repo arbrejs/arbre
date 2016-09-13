@@ -1,45 +1,42 @@
 import test from 'ava'
-import seed from './helpers/seed'
-
-test('return itself', t => {
-  const node1 = seed()
-  const node2 = node1.mapValues(value => value)
-
-  t.is(node1, node2)
-})
+import { mapValues } from '../lib/map-values'
 
 test('mutate values', t => {
-  const node = seed({ type: 'foo' }, { type: 'bar' })
-  node.mapValues(value => {
+  const root = seed({ type: 'foo' }, { type: 'bar' })
+  const ret = mapValues(root, value => {
     value.type = 'baz'
   })
 
-  t.deepEqual(node, seed({ type: 'baz' }, { type: 'baz' }))
+  t.is(ret, root)
+  t.deepEqual(root, seed({ type: 'baz' }, { type: 'baz' }))
 })
 
-test('replace values when not null is returned', t => {
-  const node = seed('foo', 'bar')
-  node.mapValues(value => {
+test('replace values when iteratee returns something', t => {
+  const root = seed('foo', 'bar')
+  const ret = mapValues(root, value => {
     if ('foo' === value) return 'baz'
     if ('bar' === value) return 'qux'
   })
 
-  t.deepEqual(node, seed('baz', 'qux'))
+  t.is(ret, root)
+  t.deepEqual(root, seed('baz', 'qux'))
 })
 
 test('replace has precedence over mutation', t => {
-  const node = seed({ type: 'foo' }, { type: 'bar' })
-  node.mapValues(value => {
+  const root = seed({ type: 'foo' }, { type: 'bar' })
+  const ret = mapValues(root, value => {
     value.type = 'baz'
     return { type: 'qux' }
   })
 
-  t.deepEqual(node, seed({ type: 'qux' }, { type: 'qux' }))
+  t.is(ret, root)
+  t.deepEqual(root, seed({ type: 'qux' }, { type: 'qux' }))
 })
 
 test('remove node when null is returned', t => {
-  const node = seed('foo', ['bar', 'baz'], 'qux')
-  node.mapValues(value => ('bar' === value ? null : value))
+  const root = seed('foo', ['bar', 'baz'], 'qux')
+  const ret = mapValues(root, value => ('bar' === value ? null : value))
 
-  t.deepEqual(node, seed('foo', 'qux'))
+  t.is(ret, root)
+  t.deepEqual(root, seed('foo', 'qux'))
 })

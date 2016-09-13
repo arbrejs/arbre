@@ -1,9 +1,9 @@
 import test from 'ava'
-import seed from './helpers/seed'
+import { filter } from '../lib/filter'
 
 test('filter with predicate', t => {
   const node = seed('foo', 'bar', 'baz', 'qux')
-  const filtered = node.filter(node => ('baz' !== node.value))
+  const filtered = filter(node, node => ('baz' !== node.value))
 
   t.is(filtered, node)
   t.deepEqual(filtered, seed('foo', 'bar', 'qux'))
@@ -11,15 +11,14 @@ test('filter with predicate', t => {
 
 test('return null if no node statisfy predicate', t => {
   const node = seed('foo', 'bar', 'baz', 'qux')
-  const filtered = node.filter(node => false)
+  const filtered = filter(node, node => false)
 
   t.is(filtered, null)
 })
 
-test('do nothing if no predicate', t => {
-  const node = seed('foo', 'bar', 'baz', 'qux')
-  const filtered = node.filter()
-
-  t.is(filtered, node)
-  t.deepEqual(filtered, node)
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = filter()
+    t.is(ret, null)
+  })
 })

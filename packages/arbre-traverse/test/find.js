@@ -1,31 +1,31 @@
 import test from 'ava'
-import seed from './helpers/seed'
+import { find } from '../lib/find'
 
 test('find a node', t => {
   const node = seed(null, 'foo')
-  const found = node.find('foo')
+  const found = find(node, node => 'foo' === node.value)
 
-  t.is(found, node.at(0))
+  t.is(found, node.children[0])
 })
 
-test('find the first node', t => {
+test('return the first found node', t => {
   const node = seed(null, 'foo', 'foo')
-  const found = node.find('foo')
+  const found = find(node, node => 'foo' === node.value)
 
-  t.is(found, node.at(0))
+  t.is(found, node.children[0])
 })
 
-test('null if no node is found', t => {
+test('return undefined if no node is found', t => {
   const node = seed(null, 'foo')
-  const found = node.find('bar')
+  const found = find(node, node => 'bar' === node.value)
 
-  t.is(found, null)
+  t.is(found, undefined)
 })
 
 test('do not find itself', t => {
   const node = seed('foo', 'foo')
-  const found = node.find('foo')
+  const found = find(node, node => 'foo' === node.value)
 
   t.not(node, found)
-  t.is(found, node.at(0))
+  t.is(found, node.children[0])
 })

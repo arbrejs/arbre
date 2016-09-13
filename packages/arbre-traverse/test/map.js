@@ -1,37 +1,30 @@
 import test from 'ava'
-import seed from './helpers/seed'
-
-test('return itself', t => {
-  const node1 = seed()
-  const node2 = node1.map(node => node)
-
-  t.is(node1, node2)
-})
+import { map } from '../lib/map'
 
 test('mutate nodes', t => {
-  const node = seed({ type: 'foo' }, { type: 'bar' })
-  node.map(node => {
+  const root = seed({ type: 'foo' }, { type: 'bar' })
+  const ret = map(root, node => {
     node.value.type = 'baz'
   })
 
-  t.deepEqual(node, seed({ type: 'baz' }, { type: 'baz' }))
+  t.is(ret, root)
+  t.deepEqual(root, seed({ type: 'baz' }, { type: 'baz' }))
 })
 
-test('replace nodes when new nodes are returned', t => {
-  const node = seed('foo', 'bar')
-  const newNode = node.map(node => {
+test('replace node when iteratee returns a new one', t => {
+  const root = seed('foo', 'bar')
+  const ret = map(root, node => {
     if ('bar' === node.value) return seed('baz', 'qux', 'corge')
   })
 
-  t.is(newNode, node)
-  t.deepEqual(node, seed('foo', ['baz', 'qux', 'corge']))
+  t.is(ret, root)
+  t.deepEqual(root, seed('foo', ['baz', 'qux', 'corge']))
 })
 
-test('remove node when null is returned', t => {
+test('remove node when iteratee returns null', t => {
   const root = seed('foo', 'bar', 'baz', 'qux')
-  root.map(node => ('baz' === node.value ? null : node))
+  const ret = map(root, node => ('baz' === node.value ? null : node))
 
-  t.is(root.children.length, 2)
-  t.is(root.at(0).value, 'bar')
-  t.is(root.at(1).value, 'qux')
+  t.is(ret, root)
+  t.deepEqual(root, seed('foo', 'bar', 'qux'))
 })

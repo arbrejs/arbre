@@ -28,3 +28,10 @@ test('remove node when iteratee returns null', t => {
   t.is(ret, root)
   t.deepEqual(root, seed('foo', 'bar', 'qux'))
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = map()
+    t.is(ret, undefined)
+  })
+})

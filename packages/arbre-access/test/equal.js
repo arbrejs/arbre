@@ -31,3 +31,10 @@ test('do not check structural equality', t => {
 
   t.true(ret)
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = equal()
+    t.false(ret)
+  })
+})

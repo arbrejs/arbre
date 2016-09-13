@@ -23,3 +23,10 @@ test('return undefined if index is out of range', t => {
 
   t.is(ret, undefined)
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = at()
+    t.is(ret, undefined)
+  })
+})

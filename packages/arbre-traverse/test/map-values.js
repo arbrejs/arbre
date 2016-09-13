@@ -40,3 +40,10 @@ test('remove node when null is returned', t => {
   t.is(ret, root)
   t.deepEqual(root, seed('foo', 'qux'))
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = mapValues()
+    t.is(ret, undefined)
+  })
+})

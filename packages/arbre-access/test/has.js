@@ -16,3 +16,10 @@ test('return false if no child is present', t => {
 
   t.false(ret)
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = has()
+    t.false(ret)
+  })
+})

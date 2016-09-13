@@ -29,3 +29,10 @@ test('do not find itself', t => {
   t.not(node, found)
   t.is(found, node.children[0])
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = find()
+    t.is(ret, undefined)
+  })
+})

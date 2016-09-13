@@ -16,3 +16,10 @@ test('walk in depth first post-order', t => {
 
   t.deepEqual(values, [1, 2, 3, 4, 5, 6])
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = walk()
+    t.is(ret, undefined)
+  })
+})

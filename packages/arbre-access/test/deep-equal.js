@@ -23,3 +23,10 @@ test('nodes are not equal if children count is not the same', t => {
 
   t.false(ret)
 })
+
+test('ignore no arguments', t => {
+  t.notThrows(() => {
+    const ret = deepEqual()
+    t.false(ret)
+  })
+})

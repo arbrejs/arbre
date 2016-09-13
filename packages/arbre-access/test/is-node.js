@@ -3,12 +3,14 @@ import { isNode } from '../lib/is-node'
 
 test('return true if value is node-like', t => {
   const node = seed()
+  const ret = isNode(node)
 
-  t.true(isNode(node))
+  t.true(ret)
 })
 
 test('return false if value is not', t => {
   const obj = { parent: null, children: {}}
+  const ret = isNode(obj)
 
-  t.false(isNode(obj))
+  t.false(ret)
 })

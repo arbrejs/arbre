@@ -3,12 +3,14 @@ import { length } from '../lib/length'
 
 test('return number of children', t => {
   const node = seed(null, 'foo', 'bar')
+  const ret = length(node)
 
-  t.is(length(node), 2)
+  t.is(ret, 2)
 })
 
 test('return 0 when no children', t => {
   const node = seed()
+  const ret = length(node)
 
-  t.is(length(node), 0)
+  t.is(ret, 0)
 })

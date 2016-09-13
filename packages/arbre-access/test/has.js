@@ -4,6 +4,15 @@ import { has } from '../lib/has'
 test('check child presence', t => {
   const node = seed(null, 'foo')
   const child = node.children[0]
+  const ret = has(node, child)
 
-  t.is(has(node, child), true)
+  t.true(ret)
+})
+
+test('return false if no child is present', t => {
+  const node = seed(null, 'foo')
+  const unknown = seed()
+  const ret = has(node, unknown)
+
+  t.false(ret)
 })

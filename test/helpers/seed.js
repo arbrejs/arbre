@@ -1,13 +1,34 @@
-import Node from '../../lib/node'
+import clone from 'clone'
 
-export default function seed(node, ...children) {
-  return children.reduce((node, child) => {
-    if (Array.isArray(child)) {
-      child = seed(child.shift(), ...child)
+class Node {
+  constructor(value) {
+    this.value = clone(value || '')
+    this.parent = null
+    this.children = []
+  }
+}
+
+function insert(node, child) {
+  node.children.push(child)
+  child.parent = node
+}
+
+const seedCreate = global.seedCreate = function(value) {
+  return new Node(value)
+}
+
+global.seed = function seed(value, ...children) {
+  return children.reduce((node, value) => {
+    let child
+    if (Array.isArray(value)) {
+      child = seed(value.shift(), ...value)
+    }
+    else {
+      child = seedCreate(value)
     }
 
-    node.add(child)
+    insert(node, child)
 
     return node
-  }, new Node(node))
+  }, seedCreate(value))
 }

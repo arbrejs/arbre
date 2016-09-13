@@ -1,6 +1,14 @@
 {
   "name": "arbre-convert",
   "version": "0.0.0",
+  "main": "index.js",
+  "jsnext:main": "index.es.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "build": "rollup -c .rollup.js"
+  },
   "dependencies": {
     "clone": "^1.0.2",
     "is-plain-obj": "^1.1.0",

@@ -1,6 +1,14 @@
 {
   "name": "arbre-traverse",
   "version": "0.0.0",
+  "main": "index.js",
+  "jsnext:main": "index.es.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "build": "rollup -c .rollup.js"
+  },
   "dependencies": {
     "tree-crawl": "^0.4.0",
     "tree-mutate": "^0.2.1"

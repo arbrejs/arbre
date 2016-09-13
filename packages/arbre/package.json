@@ -1,0 +1,19 @@
+{
+  "name": "arbre",
+  "version": "0.0.0",
+  "keywords": [
+    "tree",
+    "node",
+    "manipulation",
+    "mutable",
+    "mutation",
+    "algorithm",
+    "traversal",
+    "walk",
+    "depth first",
+    "breath first"
+  ],
+  "dependencies": {
+    "arbre-access": "0.0.0"
+  }
+}

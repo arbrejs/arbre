@@ -25,13 +25,13 @@ test('ignore itself', t => {
   const node = seed()
   const ret = insert(node, node)
 
-  t.false(ret)
+  t.is(ret, undefined)
   t.not(node.parent, node)
 })
 
 test('ignore no arguments', t => {
   t.notThrows(() => {
     const ret = insert()
-    t.false(ret)
+    t.is(ret, undefined)
   })
 })

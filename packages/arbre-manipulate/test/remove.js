@@ -14,5 +14,8 @@ test('remove a child', t => {
 test('ignore orphan node', t => {
   const node = seed()
 
-  t.notThrows(() => remove(node))
+  t.notThrows(() => {
+    const ret = remove(node)
+    t.is(ret, undefined)
+  })
 })

@@ -15,7 +15,7 @@ test('ignore out of lower-bound index', t => {
 
   t.notThrows(() => {
     const ret = insertAt(seed(), node, -1)
-    t.false(ret)
+    t.is(ret, undefined)
     t.is(node.children.length, 0)
   })
 })
@@ -25,7 +25,7 @@ test('ignore out of upper-bound index', t => {
 
   t.notThrows(() => {
     const ret = insertAt(seed(), node, 1)
-    t.false(ret)
+    t.is(ret, undefined)
     t.is(node.children.length, 0)
   })
 })
@@ -34,7 +34,7 @@ test('ignore itself', t => {
   const node = seed()
   const ret = insertAt(node, node, 0)
 
-  t.false(ret)
+  t.is(ret, undefined)
   t.is(node.children.length, 0)
   t.not(node.parent, node)
 })
@@ -42,6 +42,6 @@ test('ignore itself', t => {
 test('ignore no argument', t => {
   t.notThrows(() => {
     const ret = insertAt()
-    t.false(ret)
+    t.is(ret, undefined)
   })
 })

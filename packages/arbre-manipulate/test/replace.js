@@ -17,14 +17,14 @@ test('ignore orphan node', t => {
   const replacer = seed()
   const ret = replace(replacer, node)
 
-  t.false(ret)
+  t.is(ret, undefined)
 })
 
 test('ignore itself', t => {
   const node = seed()
   const ret = replace(node, node)
 
-  t.false(ret)
+  t.is(ret, undefined)
   t.is(node.children.length, 0)
   t.not(node.parent, node)
 })
@@ -32,6 +32,6 @@ test('ignore itself', t => {
 test('ignore no argument', t => {
   t.notThrows(() => {
     const ret = replace()
-    t.false(ret)
+    t.is(ret, undefined)
   })
 })

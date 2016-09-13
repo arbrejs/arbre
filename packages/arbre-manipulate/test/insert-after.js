@@ -16,7 +16,7 @@ test('ignore orphan node', t => {
   const inserted = seed()
   const ret = insertAfter(inserted, node)
 
-  t.false(ret)
+  t.is(ret, undefined)
   t.is(node.children.length, 0)
   t.not(inserted.parent, node)
 })
@@ -25,7 +25,7 @@ test('ignore itself', t => {
   const node = seed()
   const ret = insertAfter(node, node)
 
-  t.false(ret)
+  t.is(ret, undefined)
   t.is(node.children.length, 0)
   t.not(node.parent, node)
 })
@@ -33,6 +33,6 @@ test('ignore itself', t => {
 test('ignore no argument', t => {
   t.notThrows(() => {
     const ret = insertAfter()
-    t.false(ret)
+    t.is(ret, undefined)
   })
 })

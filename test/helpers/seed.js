@@ -6,6 +6,10 @@ class Node {
     this.parent = null
     this.children = []
   }
+
+  valueOf() {
+    return this.value
+  }
 }
 
 function insert(node, child) {

@@ -14,7 +14,7 @@
     "check-coverage": "meta check-coverage",
     "docs": "meta docs",
     "prebuild": "npm run lint -s",
-    "build": "lerna run build"
+    "build": "NODE_ENV=production node scripts/build.js"
   },
   "precommit": [
     "test",
@@ -22,13 +22,8 @@
     "build",
     "docs"
   ],
-  "devDependencies": {
-    "babel-plugin-istanbul": "^2.0.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
-    "clone": "^1.0.2",
-    "lerna": "2.0.0-beta.27",
-    "meta-dev": "^0.1.0",
-    "pre-commit": "^1.1.3"
+  "eslintConfig": {
+    "extends": "ngryman"
   },
   "ava": {
     "concurrency": 4,
@@ -39,12 +34,14 @@
   },
   "babel": {
     "plugins": [
-      "transform-es2015-modules-commonjs",
-      "istanbul"
+      "transform-es2015-parameters"
     ],
-    "ignore": "packages/*/test/*.js",
     "env": {
       "development": {
+        "plugins": [
+          "transform-es2015-modules-commonjs",
+          "istanbul"
+        ],
         "sourceMaps": "inline"
       }
     }
@@ -56,7 +53,14 @@
     "sourceMap": false,
     "instrument": false
   },
-  "dependencies": {
-    "merge-deep": "^3.0.0"
+  "devDependencies": {
+    "babel-plugin-istanbul": "^2.0.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
+    "babel-plugin-transform-es2015-parameters": "^6.11.4",
+    "clone": "^1.0.2",
+    "lerna": "2.0.0-beta.27",
+    "meta-dev": "^0.1.0",
+    "pre-commit": "^1.1.3",
+    "rollup-plugin-babel": "^2.6.1"
   }
 }

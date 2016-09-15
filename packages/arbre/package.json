@@ -14,6 +14,10 @@
     "breath first"
   ],
   "dependencies": {
-    "arbre-access": "0.0.0"
+    "arbre-access": "0.0.0",
+    "arbre-convert": "0.0.0",
+    "arbre-manipulate": "0.0.0",
+    "arbre-traverse": "0.0.0",
+    "to-method": "^0.1.0"
   }
 }

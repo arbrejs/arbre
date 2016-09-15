@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "seed": true,
+    "seedCreate": true
+  }
+}

@@ -55,7 +55,6 @@
   },
   "devDependencies": {
     "babel-plugin-istanbul": "^2.0.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
     "babel-plugin-transform-es2015-parameters": "^6.11.4",
     "clone": "^1.0.2",
     "lerna": "2.0.0-beta.27",

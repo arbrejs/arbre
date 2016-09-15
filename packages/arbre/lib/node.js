@@ -1,5 +1,5 @@
 import merge from 'merge-deep'
-import * as access from 'arbre-access'
+import toMethod from 'to-method'
 
 export class Node {
   constructor(props) {
@@ -9,4 +9,11 @@ export class Node {
   }
 }
 
-Object.assign(Node.prototype, access)
+function mixin(...modules) {
+  // require modules
+  modules.map(moduleName => require(`arbre-${moduleName}`))
+  // mixin each module into `Node` class
+  .forEach(module => toMethod(Node, module))
+}
+
+mixin('access', 'convert', 'manipulate', 'traverse')

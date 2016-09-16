@@ -1,5 +1,5 @@
 import test from 'ava'
-import { Node } from '../lib/node'
+import Node from '../lib/node'
 
 test('mix props into node', t => {
   const node = new Node({ foo: 'bar' })

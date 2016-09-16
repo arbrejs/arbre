@@ -1,16 +1,12 @@
 import test from 'ava'
-import { Node } from '../lib/node'
+import Node from '../lib/arbre'
 
-const modules = {
-  access: require('arbre-access'),
-  convert: require('arbre-convert'),
-  manipulate: require('arbre-manipulate'),
-  traverse: require('arbre-traverse')
-}
+import * as access from 'arbre-access'
+import * as convert from 'arbre-convert'
+import * as manipulate from 'arbre-manipulate'
+import * as traverse from 'arbre-traverse'
 
-for (let moduleName in modules) {
-  const module = modules[moduleName]
-
+[access, convert, manipulate, traverse].forEach(module => {
   for (let methodName in module) {
     test(`node has method ${methodName}`, t => {
       const protoFn = Node.prototype[methodName]
@@ -20,4 +16,4 @@ for (let moduleName in modules) {
       t.is(protoFn.length, moduleFn.length - 1)
     })
   }
-}
+})

@@ -1,0 +1,18 @@
+{
+  "name": "arbre-mixin",
+  "version": "0.0.0-alpha.0a71f0d4",
+  "main": "index.js",
+  "jsnext:main": "index.es.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {
+    "to-method": "^0.1.0"
+  },
+  "devDependencies": {
+    "arbre-access": "^0.0.0-alpha.0a71f0d4"
+  },
+  "arbre": {
+    "build": "simple"
+  }
+}

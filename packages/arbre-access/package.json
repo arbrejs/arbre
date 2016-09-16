@@ -1,13 +1,10 @@
 {
   "name": "arbre-access",
-  "version": "0.0.0",
+  "version": "0.0.0-alpha.0a71f0d4",
   "main": "index.js",
   "jsnext:main": "index.es.js",
   "engines": {
     "node": ">=4"
-  },
-  "scripts": {
-    "build": "rollup -c .rollup.js"
   },
   "dependencies": {
     "not-so-shallow": "^0.1.4"

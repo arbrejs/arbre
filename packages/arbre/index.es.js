@@ -1,25 +1,6 @@
-import merge from 'merge-deep';
-import toMethod from 'to-method';
+import Node from 'arbre-node';
+import mixin from 'arbre-mixin';
 
-class Node {
-  constructor(props) {
-    merge(this, props);
-    this.parent = null;
-    this.children = [];
-  }
-}
+mixin(Node, 'arbre-access', 'arbre-convert', 'arbre-manipulate', 'arbre-traverse');
 
-function mixin() {
-  for (var _len = arguments.length, modules = Array(_len), _key = 0; _key < _len; _key++) {
-    modules[_key] = arguments[_key];
-  }
-
-  // require modules
-  modules.map(moduleName => require(`arbre-${ moduleName }`))
-  // mixin each module into `Node` class
-  .forEach(module => toMethod(Node, module));
-}
-
-mixin('access', 'convert', 'manipulate', 'traverse');
-
-export { Node };
+export default Node;

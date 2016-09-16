@@ -11,15 +11,8 @@ function mixin(nodeClass) {
     modules[_key - 1] = arguments[_key];
   }
 
-  // require modules if needed
-  modules.map(moduleName => {
-    if ('string' === typeof moduleName) {
-      return require(moduleName);
-    }
-    return moduleName;
-  })
   // mixin each module into `nodeClass` prototype
-  .forEach(module => toMethod(nodeClass, module));
+  modules.forEach(module => toMethod(nodeClass, module));
 }
 
 return mixin;

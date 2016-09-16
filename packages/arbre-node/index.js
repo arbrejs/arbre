@@ -1,14 +1,14 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('merge-deep')) :
-  typeof define === 'function' && define.amd ? define(['merge-deep'], factory) :
-  (global.arbreNode = factory(global.merge));
-}(this, (function (merge) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('clone')) :
+  typeof define === 'function' && define.amd ? define(['clone'], factory) :
+  (global.arbreNode = factory(global.clone));
+}(this, (function (clone) { 'use strict';
 
-merge = 'default' in merge ? merge['default'] : merge;
+clone = 'default' in clone ? clone['default'] : clone;
 
 class Node {
-  constructor(props) {
-    merge(this, props);
+  constructor(value) {
+    this.value = clone(value);
     this.parent = null;
     this.children = [];
   }

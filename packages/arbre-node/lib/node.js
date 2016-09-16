@@ -1,8 +1,8 @@
-import merge from 'merge-deep'
+import clone from 'clone'
 
 export default class Node {
-  constructor(props) {
-    merge(this, props)
+  constructor(value) {
+    this.value = clone(value)
     this.parent = null
     this.children = []
   }

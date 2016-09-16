@@ -20,5 +20,8 @@
   ],
   "arbre": {
     "build": "simple"
+  },
+  "dependencies": {
+    "clone": "^1.0.2"
   }
 }

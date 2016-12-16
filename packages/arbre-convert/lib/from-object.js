@@ -1,6 +1,11 @@
 import morph from 'tree-morph'
 
-const dataMutator = (Ctor) => (value) => {
+const dataMutator = (Ctor, childrenKey) => (value) => {
+  if (childrenKey) {
+    value.children = value[childrenKey]
+    delete value[childrenKey]
+  }
+
   const node = new Ctor(value)
   delete node.value.children
   return node
@@ -11,6 +16,6 @@ const layoutMutator = (node, parent) => {
   node.parent = parent
 }
 
-export function fromObject(obj, Ctor) {
-  return morph(obj, dataMutator(Ctor), layoutMutator)
+export function fromObject(Ctor, obj, childrenKey) {
+  return morph(obj, dataMutator(Ctor, childrenKey), layoutMutator)
 }

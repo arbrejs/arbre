@@ -13,10 +13,10 @@ function insert(node, child) {
   child.parent = node;
 }
 
-function fromLevel(parent, children, Ctor) {
+function fromLevel(Ctor, parent, children) {
   return children.reduce((parent, child) => {
     if (Array.isArray(child)) {
-      child = fromLevel(child.shift(), child, Ctor);
+      child = fromLevel(Ctor, child.shift(), child);
     } else {
       child = new Ctor(child);
     }
@@ -27,11 +27,16 @@ function fromLevel(parent, children, Ctor) {
   }, new Ctor(parent));
 }
 
-function fromArray(array, Ctor) {
-  return fromLevel(array.shift(), array, Ctor);
+function fromArray(Ctor, array) {
+  return fromLevel(Ctor, array.shift(), array);
 }
 
-const dataMutator = Ctor => value => {
+const dataMutator = (Ctor, childrenKey) => value => {
+  if (childrenKey) {
+    value.children = value[childrenKey];
+    delete value[childrenKey];
+  }
+
   const node = new Ctor(value);
   delete node.value.children;
   return node;
@@ -42,8 +47,8 @@ const layoutMutator = (node, parent) => {
   node.parent = parent;
 };
 
-function fromObject(obj, Ctor) {
-  return morph(obj, dataMutator(Ctor), layoutMutator);
+function fromObject(Ctor, obj, childrenKey) {
+  return morph(obj, dataMutator(Ctor, childrenKey), layoutMutator);
 }
 
 function fromJSON(json, constructor) {

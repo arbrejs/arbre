@@ -27,19 +27,18 @@ function insert(node, child) {
   return insertAt(node, child, node.children.length);
 }
 
-const cloneDeep = node => {
-  const Ctor = node.constructor;
+const cloneDeep = (node, Ctor) => {
   const newNode = new Ctor(node.value);
 
   newNode.children = node.children.map(child => {
-    return insert(newNode, child.children.length > 0 ? cloneDeep(child) : new Ctor(child.value));
+    return insert(newNode, child.children.length > 0 ? cloneDeep(child, Ctor) : new Ctor(child.value));
   });
 
   return newNode;
 };
 
-function clone(node) {
-  return cloneDeep(node);
+function clone(node, Ctor) {
+  return cloneDeep(node, Ctor || node.constructor);
 }
 
 function insertAfter(node, after) {
@@ -51,10 +50,14 @@ function insertAfter(node, after) {
 
 function hoist(node) {
   const children = node.children;
-  for (var i = 0; i < children.length; i++) {
-    insertAfter(children[i], node);
+  const ret = children.length;
+
+  while (children.length > 0) {
+    const child = children[children.length - 1];
+    insertAfter(child, node);
   }
-  return i;
+
+  return ret;
 }
 
 function insertBefore(node, before) {

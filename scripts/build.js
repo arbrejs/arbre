@@ -43,27 +43,27 @@ fs.readdir(rootPath, (err, packages) => {
     const pkgPath = path.resolve(rootPath, pkgName)
 
     return readPkg(pkgPath)
-    .then(pkg => (pkg.arbre ? pkg.arbre.build : 'lib'))
-    .then(buildType =>
-      rollup({
-        entry: entry(buildType, pkgPath, pkgName),
-        plugins: plugins(buildType),
-        onwarn: () => {}
-      })
-      .then(bundle => Promise.all([
-        bundle.write({
-          dest: path.join(pkgPath, 'index.es.js'),
-          format: 'es'
-        }),
-        bundle.write({
-          dest: path.join(pkgPath, 'index.js'),
-          format: 'umd',
-          moduleName: pkgName.replace(/-(\w)/, g => g[1].toUpperCase())
+      .then(pkg => (pkg.arbre ? pkg.arbre.build : 'lib'))
+      .then(buildType =>
+        rollup({
+          entry: entry(buildType, pkgPath, pkgName),
+          plugins: plugins(buildType),
+          onwarn: () => {}
         })
-      ]))
-      .then(() => logSuccess(pkgName))
-    )
-    .catch(err => logError(pkgName, err))
+        .then(bundle => Promise.all([
+          bundle.write({
+            dest: path.join(pkgPath, 'index.es.js'),
+            format: 'es'
+          }),
+          bundle.write({
+            dest: path.join(pkgPath, 'index.js'),
+            format: 'umd',
+            moduleName: pkgName.replace(/-(\w)/, g => g[1].toUpperCase())
+          })
+        ]))
+        .then(() => logSuccess(pkgName))
+      )
+      .catch(err => logError(pkgName, err))
   })
 
   Promise.all(bundlers)

@@ -19,3 +19,10 @@ test('clone a node recursively', t => {
   t.not(ret.children[0].children[0], node.children[0].children[0])
   t.is(ret.children[0].children[0].parent, ret.children[0])
 })
+
+test('accept a custom constructor', t => {
+  const node = seed('foo', 'bar', 'baz')
+  const ret = clone(node, Node)
+
+  t.deepEqual(ret, node)
+})

@@ -3,8 +3,9 @@ import { mapValues } from '../lib/map-values'
 
 test('mutate values', t => {
   const root = seed({ type: 'foo' }, { type: 'bar' })
-  const ret = mapValues(root, value => {
+  const ret = mapValues(root, (value, node) => {
     value.type = 'baz'
+    // TODO: assert that values and node are correct
   })
 
   t.is(ret, root)

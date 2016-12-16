@@ -1,6 +1,6 @@
 import clone from 'clone'
 
-class Node {
+global.Node = class Node {
   constructor(value) {
     this.value = clone(value || '')
     this.parent = null
@@ -17,9 +17,7 @@ function insert(node, child) {
   child.parent = node
 }
 
-const seedCreate = global.seedCreate = function(value) {
-  return new Node(value)
-}
+global.seedCreate = Node
 
 global.seed = function seed(value, ...children) {
   return children.reduce((node, value) => {
@@ -28,11 +26,11 @@ global.seed = function seed(value, ...children) {
       child = seed(value.shift(), ...value)
     }
     else {
-      child = seedCreate(value)
+      child = new Node(value)
     }
 
     insert(node, child)
 
     return node
-  }, seedCreate(value))
+  }, new Node(value))
 }

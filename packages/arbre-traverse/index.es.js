@@ -13,9 +13,9 @@ function layoutNode(mutation, node, parent, index) {
   }
 }
 
-function map(node, iteratee) {
+function map(node, iteratee, order) {
   if ('function' !== typeof iteratee) return node;
-  return mutate(node, iteratee, layoutNode);
+  return mutate(node, iteratee, layoutNode, order);
 }
 
 function filter(node, predicate) {
@@ -23,11 +23,9 @@ function filter(node, predicate) {
   return map(node, node => predicate(node) ? node : null);
 }
 
-function walk(node, iteratee) {
-  let order = arguments.length <= 2 || arguments[2] === undefined ? 'pre' : arguments[2];
-
+function walk(node, iteratee, order) {
   if ('function' !== typeof iteratee) return node;
-  crawl(node, iteratee, { order });
+  crawl(node, iteratee, { order: order || 'pre' });
 }
 
 function find(node, predicate) {
@@ -46,7 +44,7 @@ function find(node, predicate) {
 
 function mapValues(node, iteratee) {
   return map(node, (node, context) => {
-    const ret = iteratee(node.value);
+    const ret = iteratee(node.value, node);
     if (null === ret) return null;
     if (undefined !== ret) {
       node.value = ret;

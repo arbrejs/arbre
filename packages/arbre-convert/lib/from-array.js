@@ -3,10 +3,10 @@ function insert(node, child) {
   child.parent = node
 }
 
-function fromLevel(parent, children, Ctor) {
+function fromLevel(Ctor, parent, children) {
   return children.reduce((parent, child) => {
     if (Array.isArray(child)) {
-      child = fromLevel(child.shift(), child, Ctor)
+      child = fromLevel(Ctor, child.shift(), child)
     }
     else {
       child = new Ctor(child)
@@ -18,6 +18,6 @@ function fromLevel(parent, children, Ctor) {
   }, new Ctor(parent))
 }
 
-export function fromArray(array, Ctor) {
-  return fromLevel(array.shift(), array, Ctor)
+export function fromArray(Ctor, array) {
+  return fromLevel(Ctor, array.shift(), array)
 }

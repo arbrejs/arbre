@@ -1,5 +1,5 @@
 import test from 'ava'
-import Node from '../lib/arbre'
+import Node from '../index'
 
 import * as access from 'arbre-access'
 import * as manipulate from 'arbre-manipulate'

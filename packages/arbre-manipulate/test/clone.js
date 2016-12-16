@@ -1,5 +1,5 @@
 import test from 'ava'
-import { clone } from '../lib/clone'
+import { clone } from '../index'
 
 test('clone a node', t => {
   const node = seed('foo')

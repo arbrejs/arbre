@@ -1,5 +1,5 @@
 import test from 'ava'
-import { firstChild } from '../lib/first-child'
+import { firstChild } from '../index'
 
 test('return the first child', t => {
   const node = seed(null, 'foo')

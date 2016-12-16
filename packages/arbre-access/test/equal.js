@@ -1,5 +1,5 @@
 import test from 'ava'
-import { equal } from '../lib/equal'
+import { equal } from '../index'
 
 test('nodes are equal with similar immutable values', t => {
   const node1 = seed('foo')

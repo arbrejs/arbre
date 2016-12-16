@@ -1,5 +1,5 @@
 import test from 'ava'
-import { remove } from '../lib/remove'
+import { remove } from '../index'
 
 test('remove a child', t => {
   const node = seed(null, 'foo')

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { find } from '../lib/find'
+import { find } from '../index'
 
 test('find a node', t => {
   const node = seed(null, 'foo')

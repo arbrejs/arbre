@@ -1,5 +1,5 @@
 import test from 'ava'
-import { toObject } from '../lib/to-object'
+import { toObject } from '../index'
 
 test('convert to object', t => {
   const node = seed({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })

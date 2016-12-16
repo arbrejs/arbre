@@ -1,5 +1,5 @@
 import test from 'ava'
-import { deepEqual } from '../lib/deep-equal'
+import { deepEqual } from '../index'
 
 test('nodes are deep equal at a structural level', t => {
   const node1 = seed('foo', 'bar')

@@ -1,20 +1,6 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('to-method')) :
-  typeof define === 'function' && define.amd ? define(['to-method'], factory) :
-  (global.arbreMixin = factory(global.toMethod));
-}(this, (function (toMethod) { 'use strict';
+import toMethod from 'to-method'
 
-toMethod = 'default' in toMethod ? toMethod['default'] : toMethod;
-
-function mixin(nodeClass) {
-  for (var _len = arguments.length, modules = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    modules[_key - 1] = arguments[_key];
-  }
-
+export function mixin(nodeClass, ...modules) {
   // mixin each module into `nodeClass` prototype
-  modules.forEach(module => toMethod(nodeClass, module));
+  modules.forEach(module => toMethod(nodeClass, module))
 }
-
-return mixin;
-
-})));

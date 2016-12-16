@@ -1,5 +1,5 @@
 import test from 'ava'
-import { length } from '../lib/length'
+import { length } from '../index'
 
 test('return number of children', t => {
   const node = seed(null, 'foo', 'bar')

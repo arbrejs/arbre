@@ -1,5 +1,5 @@
 import test from 'ava'
-import { fromObject } from '../lib/from-object'
+import { fromObject } from '../index'
 
 test('create a tree', t => {
   const node = fromObject(seedCreate, {

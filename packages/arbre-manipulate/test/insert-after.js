@@ -1,5 +1,5 @@
 import test from 'ava'
-import { insertAfter } from '../lib/insert-after'
+import { insertAfter } from '../index'
 
 test('insert after a node', t => {
   const node = seed('foo', 'bar', 'qux')

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { walk } from '../lib/walk'
+import { walk } from '../index'
 
 test('walk in depth first pre-order', t => {
   const root = seed(1, [2, [3, 4]], [5, [6]])

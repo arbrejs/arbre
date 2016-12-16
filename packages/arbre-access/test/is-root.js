@@ -1,5 +1,5 @@
 import test from 'ava'
-import { isRoot } from '../lib/is-root'
+import { isRoot } from '../index'
 
 test('return true if node has no parent', t => {
   const node = seed()

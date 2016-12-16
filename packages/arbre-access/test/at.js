@@ -1,5 +1,5 @@
 import test from 'ava'
-import { at } from '../lib/at'
+import { at } from '../index'
 
 test('return a node at the given index', t => {
   const node = seed(null, 1, 2, 3)

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { toArray } from '../lib/to-array'
+import { toArray } from '../index'
 
 test('convert to an array', t => {
   const node = seed('foo', ['bar', ['baz', 'qux']], ['quux', 'corge'])

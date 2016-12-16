@@ -1,5 +1,5 @@
 import test from 'ava'
-import { lastChild } from '../lib/last-child'
+import { lastChild } from '../index'
 
 test('return last child', t => {
   const node = seed(null, 'foo')

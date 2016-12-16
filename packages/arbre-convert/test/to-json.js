@@ -1,5 +1,5 @@
 import test from 'ava'
-import { toJSON } from '../lib/to-json'
+import { toJSON } from '../index'
 
 test('convert to JSON', t => {
   const node = seed({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })

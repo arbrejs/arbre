@@ -1,5 +1,5 @@
 import test from 'ava'
-import { insertAt } from '../lib/insert-at'
+import { insertAt } from '../index'
 
 test('insert at given index', t => {
   const node = seed('foo', 'bar', 'qux')

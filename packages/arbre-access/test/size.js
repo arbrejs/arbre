@@ -1,5 +1,5 @@
 import test from 'ava'
-import { size } from '../lib/size'
+import { size } from '../index'
 
 test('return total number of nodes', t => {
   const node = seed('foo', ['bar', ['baz', 'qux']], ['quux', 'corge'])

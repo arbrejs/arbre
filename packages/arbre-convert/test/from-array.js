@@ -1,8 +1,8 @@
 import test from 'ava'
-import { fromArray } from '../lib/from-array'
+import { fromArray } from '../index'
 
 test('create a tree', t => {
-  const node = fromArray([
+  const node = fromArray(seedCreate, [
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },
@@ -11,7 +11,7 @@ test('create a tree', t => {
       { type: 'quux' },
       { type: 'corge' }
     ]
-  ], seedCreate)
+  ])
 
   t.deepEqual(node, seed(
     { type: 'foo' }, [

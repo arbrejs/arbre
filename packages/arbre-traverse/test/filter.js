@@ -1,5 +1,5 @@
 import test from 'ava'
-import { filter } from '../lib/filter'
+import { filter } from '../index'
 
 test('filter with predicate', t => {
   const node = seed('foo', 'bar', 'baz', 'qux')

@@ -1,5 +1,5 @@
 import test from 'ava'
-import Node from '../lib/node'
+import { Node } from '../index'
 
 test('set value', t => {
   const value = 'foo'

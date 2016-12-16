@@ -1,5 +1,5 @@
 import test from 'ava'
-import { has } from '../lib/has'
+import { has } from '../index'
 
 test('check child presence', t => {
   const node = seed(null, 'foo')

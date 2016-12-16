@@ -1,5 +1,5 @@
 import test from 'ava'
-import { hoist } from '../lib/hoist'
+import { hoist } from '../index'
 
 test('insert children just after itself', t => {
   const node = seed('foo', ['bar', 'baz', 'quux', 'corge'], 'qux')

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { previousSibling } from '../lib/previous-sibling'
+import { previousSibling } from '../index'
 
 test('return previous sibling', t => {
   const node = seed(null, 'foo', 'bar')

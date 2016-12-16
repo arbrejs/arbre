@@ -1,5 +1,5 @@
 import test from 'ava'
-import { siblings } from '../lib/siblings'
+import { siblings } from '../index'
 
 test('return an array of siblings', t => {
   const node = seed(null, 'foo', 'bar', 'baz')

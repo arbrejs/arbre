@@ -1,5 +1,5 @@
 import test from 'ava'
-import { map } from '../lib/map'
+import { map } from '../index'
 
 test('mutate nodes (pre-order)', t => {
   const root = seed({ type: 'foo' }, { type: 'bar' })

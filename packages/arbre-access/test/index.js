@@ -1,5 +1,5 @@
 import test from 'ava'
-import { index } from '../lib/index'
+import { index } from '../index'
 
 test('return node index in parent node', t => {
   const node = seed(null, 'foo', 'bar', 'baz')

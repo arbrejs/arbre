@@ -1,8 +1,10 @@
 {
   "name": "arbre-access",
   "version": "0.0.0-alpha.0a71f0d4",
-  "main": "index.js",
-  "jsnext:main": "index.es.js",
+  "main": "dist/arbre-access.js",
+  "browser": "dist/arbre-access.js",
+  "module": "index.js",
+  "jsnext:main": "index.js",
   "engines": {
     "node": ">=4"
   },

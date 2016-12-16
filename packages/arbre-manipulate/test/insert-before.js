@@ -1,5 +1,5 @@
 import test from 'ava'
-import { insertBefore } from '../lib/insert-before'
+import { insertBefore } from '../index'
 
 test('insert before a node', t => {
   const node = seed('foo', 'baz', 'qux')

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { replace } from '../lib/replace'
+import { replace } from '../index'
 
 test('replace given node', t => {
   const node = seed('foo', 'bar')

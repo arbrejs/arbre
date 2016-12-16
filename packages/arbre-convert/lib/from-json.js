@@ -1,5 +1,5 @@
 import { fromObject } from './from-object'
 
-export function fromJSON(json, constructor) {
-  return fromObject(JSON.parse(json), constructor)
+export function fromJSON(Ctor, json, constructor) {
+  return fromObject(Ctor, JSON.parse(json), constructor)
 }

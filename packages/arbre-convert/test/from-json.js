@@ -1,8 +1,8 @@
 import test from 'ava'
-import { fromJSON } from '../lib/from-json'
+import { fromJSON } from '../index'
 
 test('create a tree', t => {
-  const node = fromJSON(JSON.stringify({
+  const node = fromJSON(seedCreate, JSON.stringify({
     type: 'foo',
     children: [
       {
@@ -19,7 +19,7 @@ test('create a tree', t => {
         ]
       }
     ]
-  }), seedCreate)
+  }))
 
   t.deepEqual(node, seed(
     { type: 'foo' }, [

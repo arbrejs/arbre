@@ -1,5 +1,5 @@
 import test from 'ava'
-import { prune } from '../lib/prune'
+import { prune } from '../index'
 
 test('remove all children', t => {
   const node = seed(null, 'foo', 'bar')

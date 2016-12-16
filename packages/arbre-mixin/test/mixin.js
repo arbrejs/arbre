@@ -1,5 +1,5 @@
 import test from 'ava'
-import mixin from '../lib/mixin'
+import mixin from '../index'
 
 function mixinMacro(t, input) {
   class Node {}

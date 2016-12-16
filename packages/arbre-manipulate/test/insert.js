@@ -1,5 +1,5 @@
 import test from 'ava'
-import { insert } from '../lib/insert'
+import { insert } from '../index'
 
 test('insert a node', t => {
   const node = seed()

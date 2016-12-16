@@ -1,5 +1,5 @@
 import test from 'ava'
-import { isNode } from '../lib/is-node'
+import { isNode } from '../index'
 
 test('return true if value is node-like', t => {
   const node = seed()

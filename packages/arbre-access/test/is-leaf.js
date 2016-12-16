@@ -1,5 +1,5 @@
 import test from 'ava'
-import { isLeaf } from '../lib/is-leaf'
+import { isLeaf } from '../index'
 
 test('return true if node does not have children', t => {
   const node = seed()

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { mapValues } from '../lib/map-values'
+import { mapValues } from '../index'
 
 test('mutate values', t => {
   const root = seed({ type: 'foo' }, { type: 'bar' })

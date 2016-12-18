@@ -31,29 +31,13 @@ export function find(node, predicate) {
 }
 
 /**
- * [mapValues description]
- * @param {[type]} node [description]
- * @param {[type]} iteratee [description]
- * @return {[type]} [description]
- */
-export function mapValues(node, iteratee) {
-  return map(node, (node, context) => {
-    const ret = iteratee(node.value, node)
-    if (null === ret) return null
-    if (undefined !== ret) {
-      node.value = ret
-    }
-  })
-}
-
-/**
  * [map description]
  * @param {[type]} node [description]
  * @param {[type]} iteratee [description]
  * @param {[type]} order [description]
  * @return {[type]} [description]
  */
-export function map(node, iteratee, order) {
+export function map(node, iteratee, order = 'pre') {
   if ('function' !== typeof iteratee) return node
   return mutate(node, iteratee, layoutNode, order)
 }
@@ -65,9 +49,9 @@ export function map(node, iteratee, order) {
  * @param {[type]} order [description]
  * @return {[type]} [description]
  */
-export function walk(node, iteratee, order) {
+export function walk(node, iteratee, order = 'pre') {
   if ('function' !== typeof iteratee) return node
-  crawl(node, iteratee, { order: order || 'pre' })
+  crawl(node, iteratee, { order })
 }
 
 /**

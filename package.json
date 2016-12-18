@@ -43,7 +43,7 @@
   },
   "nyc": {
     "include": [
-      "packages/{,lib/}*.js"
+      "packages/*/{,lib/}*.js"
     ],
     "sourceMap": false,
     "instrument": false

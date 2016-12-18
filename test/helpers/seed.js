@@ -1,14 +1,10 @@
 import clone from 'clone'
 
-global.Node = class Node {
-  constructor(value) {
-    this.value = clone(value || '')
-    this.parent = null
-    this.children = []
-  }
-
-  valueOf() {
-    return this.value
+function Node(value) {
+  return {
+    value: clone(value || ''),
+    parent: null,
+    children: []
   }
 }
 
@@ -17,7 +13,7 @@ function insert(node, child) {
   child.parent = node
 }
 
-global.seedCreate = Node
+global.Node = Node
 
 global.seed = function seed(value, ...children) {
   return children.reduce((node, value) => {

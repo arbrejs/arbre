@@ -1,7 +1,7 @@
 import { Node } from 'arbre-node'
 import { mixin } from 'arbre-mixin'
 
-import * as access from 'arbre-access'
+import * as access from 'arbre-query'
 import * as manipulate from 'arbre-manipulate'
 import * as traverse from 'arbre-traverse'
 import {

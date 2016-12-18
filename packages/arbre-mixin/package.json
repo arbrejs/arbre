@@ -12,7 +12,7 @@
     "to-method": "^0.1.0"
   },
   "devDependencies": {
-    "arbre-access": "^0.0.0-alpha.0a71f0d4"
+    "arbre-query": "^0.0.0-alpha.0a71f0d4"
   },
   "arbre": {
     "build": "simple"

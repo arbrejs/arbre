@@ -2,7 +2,7 @@ import test from 'ava'
 import { fromJSON } from '../index'
 
 test('create a tree', t => {
-  const node = fromJSON(seedCreate, JSON.stringify({
+  const node = fromJSON(seed, JSON.stringify({
     type: 'foo',
     children: [
       {

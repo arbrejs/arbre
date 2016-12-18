@@ -2,7 +2,7 @@ import test from 'ava'
 import { fromArray } from '../index'
 
 test('create a tree', t => {
-  const node = fromArray(seedCreate, [
+  const node = fromArray(seed, [
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },

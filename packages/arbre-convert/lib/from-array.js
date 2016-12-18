@@ -3,19 +3,19 @@ function insert(node, child) {
   child.parent = node
 }
 
-function fromLevel(Ctor, parent, children) {
+function fromLevel(factory, parent, children) {
   return children.reduce((parent, child) => {
     if (Array.isArray(child)) {
-      child = fromLevel(Ctor, child.shift(), child)
+      child = fromLevel(factory, child.shift(), child)
     }
     else {
-      child = new Ctor(child)
+      child = factory(child)
     }
 
     insert(parent, child)
 
     return parent
-  }, new Ctor(parent))
+  }, factory(parent))
 }
 
 export function fromArray(Ctor, array) {

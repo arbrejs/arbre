@@ -2,7 +2,7 @@ import test from 'ava'
 import { fromObject } from '../index'
 
 test('create a tree', t => {
-  const node = fromObject(seedCreate, {
+  const node = fromObject(seed, {
     type: 'foo',
     children: [
       {
@@ -34,7 +34,7 @@ test('create a tree', t => {
 })
 
 test('accept a custom children key', t => {
-  const node = fromObject(seedCreate, {
+  const node = fromObject(seed, {
     type: 'foo',
     belovedChildren: [
       {

@@ -1,7 +1,7 @@
 import test from 'ava'
 import Node from '../index'
 
-import * as access from 'arbre-access'
+import * as access from 'arbre-query'
 import * as manipulate from 'arbre-manipulate'
 import * as traverse from 'arbre-traverse'
 import {

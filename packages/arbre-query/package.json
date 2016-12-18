@@ -6,7 +6,7 @@
   "module": "index.js",
   "jsnext:main": "index.js",
   "engines": {
-    "node": ">=4"
+    "node": ">=5"
   },
   "dependencies": {
     "not-so-shallow": "^0.1.4"

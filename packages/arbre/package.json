@@ -24,8 +24,6 @@
     "arbre-query": "^0.0.0-alpha.0a71f0d4",
     "arbre-convert": "^0.0.0-alpha.0a71f0d4",
     "arbre-manipulate": "^0.0.0-alpha.0a71f0d4",
-    "arbre-mixin": "^0.0.0-alpha.0a71f0d4",
-    "arbre-node": "^0.0.0-alpha.0a71f0d4",
     "arbre-traverse": "^0.0.0-alpha.0a71f0d4"
   },
   "arbre": {

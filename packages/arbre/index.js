@@ -1,10 +1,4 @@
-import { Node } from 'arbre-node'
-import { mixin } from 'arbre-mixin'
-
-import * as access from 'arbre-query'
-import * as manipulate from 'arbre-manipulate'
-import * as traverse from 'arbre-traverse'
-import {
+export {
   toArray,
   toJSON,
   toObject,
@@ -13,19 +7,40 @@ import {
   fromObject
 } from 'arbre-convert'
 
-mixin(Node, access, manipulate, traverse, { toArray, toJSON, toObject })
+export {
+  clone,
+  hoist,
+  insertAfter,
+  insertAt,
+  insertBefore,
+  insert,
+  prune,
+  remove,
+  replace
+} from 'arbre-manipulate'
 
-// manual plumbing for functions using rest parameters
-// TODO: create associated test
-Node.prototype.at = function(...indices) {
-  indices.unshift(this)
-  return access.at.apply(this, indices)
-}
+export {
+  at,
+  deepEqual,
+  equal,
+  firstChild,
+  has,
+  index,
+  isLeaf,
+  isNode,
+  isRoot,
+  lastChild,
+  length,
+  nextSibling,
+  previousSibling,
+  siblings,
+  size
+} from 'arbre-query'
 
-Object.assign(Node, {
-  fromArray: fromArray.bind(null, Node),
-  fromJSON: fromJSON.bind(null, Node),
-  fromObject: fromObject.bind(null, Node)
-})
-
-export default Node
+export {
+  filter,
+  find,
+  mapValues,
+  map,
+  walk
+} from 'arbre-traverse'

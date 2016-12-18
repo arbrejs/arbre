@@ -1,8 +1,10 @@
 import clone from 'clone'
 
 function Node(value) {
+  const nodeValue = clone(value || '')
+  delete nodeValue.children
   return {
-    value: clone(value || ''),
+    value: nodeValue,
     parent: null,
     children: []
   }

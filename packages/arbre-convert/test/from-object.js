@@ -32,35 +32,3 @@ test('create a tree', t => {
     ]
   ))
 })
-
-test('accept a custom children key', t => {
-  const node = fromObject(Tree, {
-    type: 'foo',
-    belovedChildren: [
-      {
-        type: 'bar',
-        belovedChildren: [
-          { type: 'baz' },
-          { type: 'qux' }
-        ]
-      },
-      {
-        type: 'quux',
-        belovedChildren: [
-          { type: 'corge' }
-        ]
-      }
-    ]
-  }, 'belovedChildren')
-
-  t.deepEqual(node, Tree(
-    { type: 'foo' }, [
-      { type: 'bar' },
-      { type: 'baz' },
-      { type: 'qux' }
-    ], [
-      { type: 'quux' },
-      { type: 'corge' }
-    ]
-  ))
-})

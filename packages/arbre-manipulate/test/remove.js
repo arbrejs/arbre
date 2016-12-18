@@ -2,7 +2,7 @@ import test from 'ava'
 import { remove } from '../index'
 
 test('remove a child', t => {
-  const node = seed(null, 'foo')
+  const node = Tree(null, 'foo')
   const child = node.children[0]
   const ret = remove(child)
 
@@ -12,7 +12,7 @@ test('remove a child', t => {
 })
 
 test('ignore orphan node', t => {
-  const node = seed()
+  const node = Tree()
 
   t.notThrows(() => {
     const ret = remove(node)

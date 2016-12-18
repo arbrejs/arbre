@@ -2,15 +2,15 @@ import test from 'ava'
 import { filter } from '../index'
 
 test('filter with predicate', t => {
-  const node = seed('foo', 'bar', 'baz', 'qux')
+  const node = Tree('foo', 'bar', 'baz', 'qux')
   const filtered = filter(node, node => ('baz' !== node.value))
 
   t.is(filtered, node)
-  t.deepEqual(filtered, seed('foo', 'bar', 'qux'))
+  t.deepEqual(filtered, Tree('foo', 'bar', 'qux'))
 })
 
 test('return null if no node statisfy predicate', t => {
-  const node = seed('foo', 'bar', 'baz', 'qux')
+  const node = Tree('foo', 'bar', 'baz', 'qux')
   const filtered = filter(node, node => false)
 
   t.is(filtered, null)

@@ -1,6 +1,5 @@
 {
   "globals": {
-    "seed": true,
-    "seedCreate": treu
+    "Tree": true
   }
 }

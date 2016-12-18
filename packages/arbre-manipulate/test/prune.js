@@ -2,7 +2,7 @@ import test from 'ava'
 import { prune } from '../index'
 
 test('remove all children', t => {
-  const node = seed(null, 'foo', 'bar')
+  const node = Tree(null, 'foo', 'bar')
   const first = node.children[0]
   const last = node.children[1]
   const ret = prune(node)
@@ -14,7 +14,7 @@ test('remove all children', t => {
 })
 
 test('return 0 if no children', t => {
-  const node = seed()
+  const node = Tree()
   const ret = prune(node)
 
   t.is(ret, 0)

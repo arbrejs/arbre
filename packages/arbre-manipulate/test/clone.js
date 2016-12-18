@@ -2,16 +2,16 @@ import test from 'ava'
 import { clone } from '../index'
 
 test('clone a node', t => {
-  const node = seed('foo')
-  const ret = clone(seed, node)
+  const node = Tree('foo')
+  const ret = clone(Tree, node)
 
   t.not(ret, node)
   t.deepEqual(ret, node)
 })
 
 test('clone a node recursively', t => {
-  const node = seed('foo', ['bar', 'baz'])
-  const ret = clone(seed, node)
+  const node = Tree('foo', ['bar', 'baz'])
+  const ret = clone(Tree, node)
 
   t.deepEqual(ret, node)
   t.not(ret.children[0], node.children[0])

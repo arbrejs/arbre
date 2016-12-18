@@ -2,7 +2,7 @@ import test from 'ava'
 import { fromArray } from '../index'
 
 test('create a tree', t => {
-  const node = fromArray(seed, [
+  const node = fromArray(Tree, [
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },
@@ -13,7 +13,7 @@ test('create a tree', t => {
     ]
   ])
 
-  t.deepEqual(node, seed(
+  t.deepEqual(node, Tree(
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },

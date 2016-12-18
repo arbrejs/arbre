@@ -2,28 +2,28 @@ import test from 'ava'
 import { find } from '../index'
 
 test('find a node', t => {
-  const node = seed(null, 'foo')
+  const node = Tree(null, 'foo')
   const found = find(node, node => 'foo' === node.value)
 
   t.is(found, node.children[0])
 })
 
 test('return the first found node', t => {
-  const node = seed(null, 'foo', 'foo')
+  const node = Tree(null, 'foo', 'foo')
   const found = find(node, node => 'foo' === node.value)
 
   t.is(found, node.children[0])
 })
 
 test('return undefined if no node is found', t => {
-  const node = seed(null, 'foo')
+  const node = Tree(null, 'foo')
   const found = find(node, node => 'bar' === node.value)
 
   t.is(found, undefined)
 })
 
 test('do not find itself', t => {
-  const node = seed('foo', 'foo')
+  const node = Tree('foo', 'foo')
   const found = find(node, node => 'foo' === node.value)
 
   t.not(node, found)

@@ -2,7 +2,7 @@ import test from 'ava'
 import { walk } from '../index'
 
 test('walk in depth first pre-order', t => {
-  const root = seed(1, [2, [3, 4]], [5, [6]])
+  const root = Tree(1, [2, [3, 4]], [5, [6]])
   const values = []
   walk(root, node => values.push(node.value))
 
@@ -10,7 +10,7 @@ test('walk in depth first pre-order', t => {
 })
 
 test('walk in depth first post-order', t => {
-  const root = seed(6, [3, 1, 2], [5, 4])
+  const root = Tree(6, [3, 1, 2], [5, 4])
   const values = []
   walk(root, node => values.push(node.value), 'post')
 

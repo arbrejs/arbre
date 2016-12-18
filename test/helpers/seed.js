@@ -8,25 +8,17 @@ function Node(value) {
   }
 }
 
-function insert(node, child) {
-  node.children.push(child)
-  child.parent = node
-}
-
-global.Node = Node
-
-global.seed = function seed(value, ...children) {
+global.Tree = function Tree(value, ...children) {
   return children.reduce((node, value) => {
     let child
     if (Array.isArray(value)) {
-      child = seed(value.shift(), ...value)
+      child = Tree(value.shift(), ...value)
     }
     else {
-      child = new Node(value)
+      child = Node(value)
     }
-
-    insert(node, child)
-
+    node.children.push(child)
+    child.parent = node
     return node
-  }, new Node(value))
+  }, Node(value))
 }

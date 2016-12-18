@@ -2,26 +2,26 @@ import test from 'ava'
 import { replace } from '../index'
 
 test('replace given node', t => {
-  const node = seed('foo', 'bar')
+  const node = Tree('foo', 'bar')
   const old = node.children[0]
-  const replacer = seed('baz')
+  const replacer = Tree('baz')
   const ret = replace(replacer, old)
 
   t.is(ret, replacer)
-  t.deepEqual(node, seed('foo', 'baz'))
+  t.deepEqual(node, Tree('foo', 'baz'))
   t.is(old.parent, null)
 })
 
 test('ignore orphan node', t => {
-  const node = seed()
-  const replacer = seed()
+  const node = Tree()
+  const replacer = Tree()
   const ret = replace(replacer, node)
 
   t.is(ret, undefined)
 })
 
 test('ignore itself', t => {
-  const node = seed()
+  const node = Tree()
   const ret = replace(node, node)
 
   t.is(ret, undefined)

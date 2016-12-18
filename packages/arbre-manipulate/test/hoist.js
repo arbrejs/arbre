@@ -2,15 +2,15 @@ import test from 'ava'
 import { hoist } from '../index'
 
 test('insert children just after itself', t => {
-  const node = seed('foo', ['bar', 'baz', 'quux', 'corge'], 'qux')
+  const node = Tree('foo', ['bar', 'baz', 'quux', 'corge'], 'qux')
   const ret = hoist(node.children[0])
 
   t.is(ret, 3)
-  t.deepEqual(node, seed('foo', 'bar', 'baz', 'quux', 'corge', 'qux'))
+  t.deepEqual(node, Tree('foo', 'bar', 'baz', 'quux', 'corge', 'qux'))
 })
 
 test('ignore orphan node', t => {
-  const node = seed()
+  const node = Tree()
 
   t.notThrows(() => {
     const ret = hoist(node)

@@ -1,6 +1,0 @@
-{
-  "globals": {
-    "Node": true,
-    "seed": true
-  }
-}

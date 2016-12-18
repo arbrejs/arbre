@@ -2,7 +2,7 @@ import test from 'ava'
 import { toJSON } from '../index'
 
 test('convert to JSON', t => {
-  const node = seed({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })
+  const node = Tree({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })
   const json = toJSON(node)
 
   t.deepEqual(json, JSON.stringify({
@@ -15,7 +15,7 @@ test('convert to JSON', t => {
 })
 
 test('add a value property for non-plain objects', t => {
-  const node = seed('foo', 'bar', 'baz')
+  const node = Tree('foo', 'bar', 'baz')
   const json = toJSON(node)
 
   t.deepEqual(json, JSON.stringify({

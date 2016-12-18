@@ -2,18 +2,18 @@ import test from 'ava'
 import { insertAfter } from '../index'
 
 test('insert after a node', t => {
-  const node = seed('foo', 'bar', 'qux')
+  const node = Tree('foo', 'bar', 'qux')
   const after = node.children[0]
-  const inserted = seed('baz')
+  const inserted = Tree('baz')
   const ret = insertAfter(inserted, after)
 
   t.is(ret, inserted)
-  t.deepEqual(node, seed('foo', 'bar', 'baz', 'qux'))
+  t.deepEqual(node, Tree('foo', 'bar', 'baz', 'qux'))
 })
 
 test('ignore orphan node', t => {
-  const node = seed()
-  const inserted = seed()
+  const node = Tree()
+  const inserted = Tree()
   const ret = insertAfter(inserted, node)
 
   t.is(ret, undefined)
@@ -22,7 +22,7 @@ test('ignore orphan node', t => {
 })
 
 test('ignore itself', t => {
-  const node = seed()
+  const node = Tree()
   const ret = insertAfter(node, node)
 
   t.is(ret, undefined)

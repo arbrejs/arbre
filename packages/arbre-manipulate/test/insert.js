@@ -2,8 +2,8 @@ import test from 'ava'
 import { insert } from '../index'
 
 test('insert a node', t => {
-  const node = seed()
-  const child = seed('foo')
+  const node = Tree()
+  const child = Tree('foo')
   const ret = insert(node, child)
 
   t.is(ret, child)
@@ -12,17 +12,17 @@ test('insert a node', t => {
 })
 
 test('move an existing node', t => {
-  const node = seed(null, ['foo', 'bar'])
+  const node = Tree(null, ['foo', 'bar'])
   const moved = node.children[0].children[0]
   const ret = insert(node, moved)
 
   t.is(ret, moved)
-  t.deepEqual(node, seed(null, 'foo', 'bar'))
+  t.deepEqual(node, Tree(null, 'foo', 'bar'))
   t.is(moved, node.children[1])
 })
 
 test('ignore itself', t => {
-  const node = seed()
+  const node = Tree()
   const ret = insert(node, node)
 
   t.is(ret, undefined)

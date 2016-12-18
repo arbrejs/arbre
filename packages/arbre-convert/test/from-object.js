@@ -2,7 +2,7 @@ import test from 'ava'
 import { fromObject } from '../index'
 
 test('create a tree', t => {
-  const node = fromObject(seed, {
+  const node = fromObject(Tree, {
     type: 'foo',
     children: [
       {
@@ -21,7 +21,7 @@ test('create a tree', t => {
     ]
   })
 
-  t.deepEqual(node, seed(
+  t.deepEqual(node, Tree(
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },
@@ -34,7 +34,7 @@ test('create a tree', t => {
 })
 
 test('accept a custom children key', t => {
-  const node = fromObject(seed, {
+  const node = fromObject(Tree, {
     type: 'foo',
     belovedChildren: [
       {
@@ -53,7 +53,7 @@ test('accept a custom children key', t => {
     ]
   }, 'belovedChildren')
 
-  t.deepEqual(node, seed(
+  t.deepEqual(node, Tree(
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },

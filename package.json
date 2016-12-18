@@ -51,7 +51,7 @@
   },
   "nyc": {
     "exclude": [
-      "packages/*/{dist,test}/*.js"
+      "**/{dist,test}/*"
     ],
     "sourceMap": false,
     "instrument": false

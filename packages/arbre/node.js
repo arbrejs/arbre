@@ -13,13 +13,12 @@ const staticMethods = {
   fromJSON: functions.fromJSON.bind(null, Node),
   fromObject: functions.fromObject.bind(null, Node)
 }
+Object.assign(Node, staticMethods)
 
 const methods = Object.assign({}, functions)
 delete methods.fromArray
 delete methods.fromJSON
 delete methods.fromObject
-
 toMethod(Node, methods)
-Object.assign(Node, staticMethods)
 
 export default Node

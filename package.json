@@ -38,7 +38,7 @@
     "concurrency": 4,
     "require": [
       "babel-register",
-      "./test/helpers/seed"
+      "./helpers/tree"
     ]
   },
   "babel": {

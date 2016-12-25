@@ -2,16 +2,21 @@ import toMethod from 'to-method'
 import * as functions from './index'
 
 class Node {
-  constructor() {
+  constructor(value) {
     this.parent = null
     this.children = []
+    Object.assign(this, value)
   }
 }
 
+function createNode() {
+  return new Node()
+}
+
 const staticMethods = {
-  fromArray: functions.fromArray.bind(null, Node),
-  fromJSON: functions.fromJSON.bind(null, Node),
-  fromObject: functions.fromObject.bind(null, Node)
+  fromArray: functions.fromArray.bind(null, createNode),
+  fromJSON: functions.fromJSON.bind(null, createNode),
+  fromObject: functions.fromObject.bind(null, createNode)
 }
 Object.assign(Node, staticMethods)
 

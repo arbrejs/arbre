@@ -29,7 +29,14 @@
     "docs": "meta docs",
     "prebuild": "npm run lint -s",
     "build": "meta build",
-    "prepublish": "npm run build -s"
+    "prepublish": "npm run build -s",
+    "precommit": "npm run check-coverage -s"
+  },
+  "dependencies": {
+    "not-so-shallow": "^0.1.4",
+    "tree-crawl": "^0.5.0",
+    "tree-morph": "^0.1.0",
+    "tree-mutate": "^0.4.0"
   },
   "devDependencies": {
     "clone": "^2.1.0",
@@ -60,11 +67,5 @@
   "nyc": {
     "sourceMap": false,
     "instrument": false
-  },
-  "dependencies": {
-    "not-so-shallow": "^0.1.4",
-    "tree-crawl": "^0.5.0",
-    "tree-morph": "^0.1.0",
-    "tree-mutate": "^0.4.0"
   }
 }

@@ -25,12 +25,11 @@
     "coverage": "meta coverage",
     "see-coverage": "meta see-coverage",
     "check-coverage": "meta check-coverage",
-    "predocs": "npm run build -s",
-    "docs": "meta docs",
+    "docs": "documentation build lib/*.js --format md --output docs/api.md",
     "prebuild": "npm run lint -s",
     "build": "meta build",
     "prepublish": "npm run build -s",
-    "precommit": "npm run check-coverage -s"
+    "precommit": "npm run docs -s"
   },
   "dependencies": {
     "not-so-shallow": "^0.1.4",
@@ -40,6 +39,7 @@
   },
   "devDependencies": {
     "clone": "^2.1.0",
+    "documentation": "^4.0.0-beta.18",
     "husky": "^0.12.0",
     "meta-dev": "^0.4.0"
   },

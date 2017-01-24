@@ -1,0 +1,6 @@
+export { fromArray } from './lib/from-array'
+export { fromJSON } from './lib/from-json'
+export { fromObject } from './lib/from-object'
+export { toArray } from './lib/to-array'
+export { toJSON } from './lib/to-json'
+export { toObject } from './lib/to-object'

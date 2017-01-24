@@ -1,19 +1,21 @@
 {
   "name": "arbre",
   "version": "0.0.0",
-  "description": "Generic tree library nature lovers.",
+  "description": "n-ary tree library",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/arbre",
-  "main": "index.cjs",
+  "main": "dist/arbre.node.js",
+  "browser": "dist/arbre.browser.js",
+  "module": "index.js",
   "jsnext:main": "index.js",
   "engines": {
-    "node": ">=4"
+    "node": ">=5"
   },
   "files": [
     "index.js",
-    "index.cjs",
-    "lib/"
+    "lib/",
+    "dist/"
   ],
   "scripts": {
     "lint": "meta lint",
@@ -23,48 +25,47 @@
     "coverage": "meta coverage",
     "see-coverage": "meta see-coverage",
     "check-coverage": "meta check-coverage",
-    "docs": "meta docs",
+    "docs": "documentation build lib/*.js --format md --output docs/api.md",
     "prebuild": "npm run lint -s",
-    "build": "meta build"
+    "build": "meta build",
+    "prepublish": "npm run build -s",
+    "precommit": "npm run docs -s"
   },
-  "precommit": [
-    "test",
-    "check-coverage",
-    "build",
-    "docs"
-  ],
-  "keywords": [
-    "tree",
-    "node",
-    "manipulation",
-    "mutable",
-    "mutation",
-    "algorithm",
-    "traversal",
-    "walk",
-    "depth first",
-    "breath first"
-  ],
   "dependencies": {
-    "clone": "^2.1.0",
-    "is-plain-obj": "^1.1.0",
     "not-so-shallow": "^0.1.4",
     "tree-crawl": "^0.5.0",
     "tree-morph": "^0.1.0",
     "tree-mutate": "^0.4.0"
   },
   "devDependencies": {
-    "meta-dev": "^0.4.0",
-    "pre-commit": "^1.1.3"
+    "clone": "^2.1.0",
+    "documentation": "^4.0.0-beta.18",
+    "husky": "^0.12.0",
+    "meta-dev": "^0.4.2"
+  },
+  "eslintConfig": {
+    "extends": "ngryman"
   },
   "ava": {
     "require": [
-      "babel-register"
+      "babel-register",
+      "./test/helpers/tree"
     ]
   },
   "babel": {
-    "plugins": [
-      "transform-es2015-modules-commonjs"
-    ]
+    "env": {
+      "test": {
+        "presets": [
+          "node5"
+        ],
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
   }
 }

@@ -1,0 +1,16 @@
+{
+  "name": "arbre-convert",
+  "version": "0.0.0-alpha.0a71f0d4",
+  "main": "dist/arbre-convert.js",
+  "browser": "dist/arbre-convert.js",
+  "module": "index.js",
+  "jsnext:main": "index.js",
+  "engines": {
+    "node": ">=5"
+  },
+  "dependencies": {
+    "clone": "^1.0.2",
+    "is-plain-obj": "^1.1.0",
+    "tree-morph": "^0.1.0"
+  }
+}

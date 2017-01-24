@@ -448,4 +448,4 @@ Walk a tree, visiting each node.
 -   `iteratee` **[Iteratee](#iteratee)** Called on each node.
 -   `order` **(pre | post)?** Traversal mode (optional, default `'pre'`)
 
-Returns **\[type]** [description]
+Returns **[Node](#node)** 

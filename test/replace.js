@@ -4,18 +4,18 @@ import replace from '../lib/replace'
 test('replace given node', t => {
   const node = Tree('foo', 'bar')
   const old = node.children[0]
-  const replacer = Tree('baz')
-  const ret = replace(replacer, old)
+  const target = Tree('baz')
+  const ret = replace(target, old)
 
-  t.is(ret, replacer)
+  t.is(ret, target)
   t.deepEqual(node, Tree('foo', 'baz'))
   t.is(old.parent, null)
 })
 
 test('ignore orphan node', t => {
   const node = Tree()
-  const replacer = Tree()
-  const ret = replace(replacer, node)
+  const target = Tree()
+  const ret = replace(target, node)
 
   t.is(ret, undefined)
 })

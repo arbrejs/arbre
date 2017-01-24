@@ -10,9 +10,36 @@
 -   [find](#find)
 -   [firstChild](#firstchild)
 -   [fromArray](#fromarray)
--   [Node](#node)
+-   [fromJSON](#fromjson)
+-   [fromObject](#fromobject)
+-   [has](#has)
+-   [hoist](#hoist)
+-   [index](#index)
+-   [insertAfter](#insertafter)
+-   [insertAt](#insertat)
+-   [insertBefore](#insertbefore)
+-   [insert](#insert)
+-   [isLeaf](#isleaf)
+-   [isNode](#isnode)
+-   [isRoot](#isroot)
+-   [Iteratee](#iteratee)
 -   [Predicate](#predicate)
+-   [Node](#node)
+-   [NodeFactory](#nodefactory)
 -   [lastChild](#lastchild)
+-   [length](#length)
+-   [map](#map)
+-   [nextSibling](#nextsibling)
+-   [previousSibling](#previoussibling)
+-   [prune](#prune)
+-   [remove](#remove)
+-   [replace](#replace)
+-   [siblings](#siblings)
+-   [size](#size)
+-   [toArray](#toarray)
+-   [toJSON](#tojson)
+-   [toObject](#toobject)
+-   [walk](#walk)
 
 ## at
 
@@ -23,7 +50,7 @@ Return a node at the given position.
 -   `node` **[Node](#node)** Node
 -   `indices` **...[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Nested indices of the node.
 
-Returns **[Node](#node)** Node at given position.
+Returns **[Node](#node)** 
 
 ## clone
 
@@ -34,7 +61,7 @@ Deep clone a node and its children.
 -   `factory` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Factory creating a new node object.
 -   `node` **[Node](#node)** Node to be cloned.
 
-Returns **[Node](#node)** Cloned node.
+Returns **[Node](#node)** 
 
 ## deepEqual
 
@@ -45,7 +72,7 @@ Check if a node deep equals another node.
 -   `node1` **[Node](#node)** First node to be compaired.
 -   `node2` **[Node](#node)** Second node to be compaired.
 
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Either they are deep equal or not.
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## equal
 
@@ -56,7 +83,7 @@ Check if a node equals another node.
 -   `node1` **[Node](#node)** First node to be compaired.
 -   `node2` **[Node](#node)** Second node to be compaired.
 
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Either they are deep equal or not.
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## filter
 
@@ -69,7 +96,7 @@ When a node is removed, all its children are removed too.
 -   `node` **[Node](#node)** Node to be filtered.
 -   `predicate` **[Predicate](#predicate)** Filter predicate.
 
-Returns **[Node](#node)** Filtered node.
+Returns **[Node](#node)** 
 
 ## find
 
@@ -80,7 +107,7 @@ Find a node with the given predicate.
 -   `node` **[Node](#node)** Node to be searched.
 -   `predicate` **[Predicate](#predicate)** Search predicate.
 
-Returns **([Node](#node) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** Found node.
+Returns **([Node](#node) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
 
 ## firstChild
 
@@ -90,18 +117,170 @@ Return the first child of a node.
 
 -   `node` **[Node](#node)** Parent node.
 
-Returns **[Node](#node)** First child.
+Returns **[Node](#node)** 
 
 ## fromArray
 
-Convert an array-notation tree to a nested to and `arbre` tree.
+Convert an array-notation tree into an `arbre` tree.
 
 **Parameters**
 
--   `factory` **\[type]** [description]
--   `array` **\[type]** [description]
+-   `factory` **[NodeFactory](#nodefactory)** Function used to create `arbre` nodes.
+-   `array` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array-notation tree.
 
-Returns **\[type]** [description]
+Returns **[Node](#node)** 
+
+## fromJSON
+
+Convert a JSON-notation tree into an `arbre` tree.
+
+**Parameters**
+
+-   `factory` **[NodeFactory](#nodefactory)** Function used to create `arbre` nodes.
+-   `json` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** JSON-notation tree.
+
+Returns **[Node](#node)** 
+
+## fromObject
+
+Convert an plain-object-notation tree into an `arbre` tree.
+
+**Parameters**
+
+-   `factory` **[NodeFactory](#nodefactory)** Function used to create `arbre` nodes.
+-   `obj` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Plain-object-notation tree.
+
+Returns **[Node](#node)** 
+
+## has
+
+Check if a node has another node as child.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Parent node.
+-   `child` **[Node](#node)** Node to check.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## hoist
+
+Hoist a node children.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node whose children are hoisted.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+## index
+
+Return the index of a node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+## insertAfter
+
+Insert a node after another.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Reference node.
+-   `target` **[Node](#node)** Node to be inserted.
+
+Returns **[Node](#node)** 
+
+## insertAt
+
+Insert a node at the given index.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Reference node.
+-   `target` **[Node](#node)** Node to be inserted.
+-   `index` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index where to insert the target node.
+
+Returns **[Node](#node)** 
+
+## insertBefore
+
+Insert a node before another.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Reference node.
+-   `target` **[Node](#node)** Node to be inserted.
+
+Returns **[Node](#node)** 
+
+## insert
+
+Insert a node.
+
+**Parameters**
+
+-   `parent` **[Node](#node)** Parent node.
+-   `target` **[Node](#node)** Node to be inserted.
+
+Returns **[Node](#node)** 
+
+## isLeaf
+
+Check if a node is a leaf: it has no children.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to check.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## isNode
+
+Check if an object is an arbre-compatible node.
+
+**Parameters**
+
+-   `obj` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object to check.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## isRoot
+
+Check if a node is a root: it has no parent.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to check.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## Iteratee
+
+Apply an operation on a node.
+
+Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to be processed.
+
+Returns **([Node](#node) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
+
+## Predicate
+
+Test if a node satifies a condition.
+
+Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to be processed.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## Node
 
@@ -114,22 +293,159 @@ Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 -   `parent` **[Node](#node)** Parent node.
 -   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](#node)>** Children nodes.
 
-## Predicate
+## NodeFactory
+
+Create a new `arbre` node.
 
 Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
 
 **Parameters**
 
--   `node` **[Node](#node)** Node to be processed.
+-   `Node` **any** data.
 
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Return if the node passed the condition.
+Returns **[Node](#node)** 
 
 ## lastChild
 
-Get the last child or a node.
+Get the last child of a node.
 
 **Parameters**
 
 -   `node` **[Node](#node)** Parent node.
 
-Returns **[Node](#node)** Last child.
+Returns **[Node](#node)** 
+
+## length
+
+Get the length of a node: the number of children.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to check.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+## map
+
+Maps over each node recursively.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to be mapped over.
+-   `iteratee` **[Iteratee](#iteratee)** Return the altered node or a new node.
+-   `order` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** [description] (optional, default `'pre'`)
+
+Returns **[Node](#node)** 
+
+## nextSibling
+
+Return the next sibling of a node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Reference node.
+
+Returns **([Node](#node) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
+
+## previousSibling
+
+Return the previous sibling of a node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Reference node.
+
+Returns **([Node](#node) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
+
+## prune
+
+Prune a node: remove all its children.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to prune.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+## remove
+
+Remove a node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to remove.
+
+Returns **[Node](#node)** 
+
+## replace
+
+Replace a node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Node to replace.
+-   `target` **[Node](#node)** Replacement node.
+
+Returns **[Node](#node)** 
+
+## siblings
+
+Return the siblings of a node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Reference node.
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
+
+## size
+
+Return the size of a tree.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Root node of the tree.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+## toArray
+
+Convert a tree to an array-notation.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Root node of the tree.
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
+
+## toJSON
+
+Converts a tree to JSON-notation.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Root node of the tree.
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+## toObject
+
+Convert a tree to object-notation.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Root node of the tree.
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+## walk
+
+Walk a tree, visiting each node.
+
+**Parameters**
+
+-   `node` **[Node](#node)** Root node of thee tree.
+-   `iteratee` **[Iteratee](#iteratee)** Called on each node.
+-   `order` **(pre | post)?** Traversal mode (optional, default `'pre'`)
+
+Returns **\[type]** [description]

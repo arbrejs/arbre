@@ -1,0 +1,72 @@
+{
+  "name": "arbre",
+  "version": "0.0.0",
+  "description": "n-ary tree library",
+  "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
+  "license": "MIT",
+  "repository": "ngryman/arbre",
+  "main": "dist/arbre.node.js",
+  "browser": "dist/arbre.browser.js",
+  "module": "index.js",
+  "jsnext:main": "index.js",
+  "engines": {
+    "node": ">=5"
+  },
+  "files": [
+    "index.js",
+    "lib/",
+    "dist/"
+  ],
+  "scripts": {
+    "lint": "meta lint",
+    "pretest": "npm run lint -s",
+    "test": "meta test",
+    "dev": "meta dev",
+    "coverage": "meta coverage",
+    "see-coverage": "meta see-coverage",
+    "check-coverage": "meta check-coverage",
+    "docs": "documentation build lib/*.js --format md --output docs/api.md",
+    "prebuild": "npm run lint -s",
+    "build": "meta build",
+    "prepublish": "npm run build -s",
+    "precommit": "npm run docs -s"
+  },
+  "dependencies": {
+    "deep-eql": "^2.0.1",
+    "tree-crawl": "^0.5.0",
+    "tree-morph": "^0.1.0",
+    "tree-mutate": "^0.4.0"
+  },
+  "devDependencies": {
+    "clone": "^2.1.0",
+    "documentation": "^4.0.0-beta.18",
+    "husky": "^0.12.0",
+    "meta-dev": "^0.4.2"
+  },
+  "eslintConfig": {
+    "extends": "ngryman"
+  },
+  "ava": {
+    "concurrency": 4,
+    "require": [
+      "babel-register",
+      "./test/helpers/tree"
+    ]
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "node5"
+        ],
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  }
+}

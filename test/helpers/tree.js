@@ -1,13 +1,7 @@
-import clone from 'clone'
+import { cloneNode } from '../../lib/util'
 
 function Node(value) {
-  const nodeValue = clone(value || '')
-  delete nodeValue.children
-  return {
-    value: nodeValue,
-    parent: null,
-    children: []
-  }
+  return cloneNode({ value })
 }
 
 global.Tree = function Tree(value, ...children) {

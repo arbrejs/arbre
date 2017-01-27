@@ -3,19 +3,26 @@ import clone from '../lib/clone'
 
 test('clone a node', t => {
   const node = Tree('foo')
-  const ret = clone(node, Tree)
+  const ret = clone(node)
 
   t.not(ret, node)
-  t.deepEqual(ret, node)
+  t.is(ret.parent, null)
+  t.deepEqual(ret.children, [])
+  t.deepEqual(ret.value, node.value)
 })
 
-test('clone a node recursively', t => {
-  const node = Tree('foo', ['bar', 'baz'])
-  const ret = clone(node, Tree)
+test('does not clone children of a node', t => {
+  const node = Tree('foo', 'bar')
+  const ret = clone(node)
 
-  t.deepEqual(ret, node)
-  t.not(ret.children[0], node.children[0])
-  t.is(ret.children[0].parent, ret)
-  t.not(ret.children[0].children[0], node.children[0].children[0])
-  t.is(ret.children[0].children[0].parent, ret.children[0])
+  t.not(ret, node)
+  t.deepEqual(ret.children, [])
+})
+
+test('accept a creator function', t => {
+  const node = Tree('foo')
+  const ret = clone(node, () => ({ value: 'bar' }))
+
+  t.not(ret, node)
+  t.is(ret.value, 'bar')
 })

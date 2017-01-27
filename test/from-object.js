@@ -2,33 +2,33 @@ import test from 'ava'
 import fromObject from '../lib/from-object'
 
 test('create a tree', t => {
-  const node = fromObject(Tree, {
-    type: 'foo',
+  const node = fromObject({
+    value: 'foo',
     children: [
       {
-        type: 'bar',
+        value: 'bar',
         children: [
-          { type: 'baz' },
-          { type: 'qux' }
+          { value: 'baz' },
+          { value: 'qux' }
         ]
       },
       {
-        type: 'quux',
+        value: 'quux',
         children: [
-          { type: 'corge' }
+          { value: 'corge' }
         ]
       }
     ]
   })
 
   t.deepEqual(node, Tree(
-    { type: 'foo' }, [
-      { type: 'bar' },
-      { type: 'baz' },
-      { type: 'qux' }
+    'foo', [
+      'bar',
+      'baz',
+      'qux'
     ], [
-      { type: 'quux' },
-      { type: 'corge' }
+      'quux',
+      'corge'
     ]
   ))
 })

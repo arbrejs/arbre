@@ -37,12 +37,23 @@ Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 # clone
 
-Deep clone a node and its children.
+Clone a node.
 
 **Parameters**
 
 -   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be cloned.
--   `factory` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Factory creating a new node object.
+-   `creator` **\[[Creator](#creator)](default copy)** Function that creates new node object.
+
+Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
+
+# deep-clone
+
+Deep clone a node and its children.
+
+**Parameters**
+
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
+-   `creator` **[Creator](#creator)** Function that creates new node object.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
@@ -133,7 +144,7 @@ Convert an array-notation tree into an `arbre` tree.
 
 **Parameters**
 
--   `factory` **[NodeFactory](#nodefactory)** Function used to create `arbre` nodes.
+-   `creator` **[Creator](#creator)** Function that creates new node object.
 -   `array` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array-notation tree.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
@@ -144,7 +155,7 @@ Convert a JSON-notation tree into an `arbre` tree.
 
 **Parameters**
 
--   `factory` **[NodeFactory](#nodefactory)** Function used to create `arbre` nodes.
+-   `creator` **[Creator](#creator)** Function that creates new node object.
 -   `json` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** JSON-notation tree.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
@@ -155,7 +166,7 @@ Convert an plain-object-notation tree into an `arbre` tree.
 
 **Parameters**
 
--   `factory` **[NodeFactory](#nodefactory)** Function used to create `arbre` nodes.
+-   `creator` **[Creator](#creator)** Function used to create `arbre` nodes.
 -   `obj` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Plain-object-notation tree.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
@@ -300,17 +311,16 @@ Check if a node is a root: it has no parent.
 
 Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-# Predicate
+# Node
 
-Test if a node satifies a condition.
+`arbre` compatible node.
 
-**Parameters**
+**Properties**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be processed.
+-   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
+-   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)>** Children nodes.
 
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-# NodeFactory
+# Creator
 
 Create a new `arbre` node.
 
@@ -320,14 +330,15 @@ Create a new `arbre` node.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
-# Node
+# Predicate
 
-`arbre` compatible node.
+Test if a node satifies a condition.
 
-**Properties**
+**Parameters**
 
--   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
--   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)>** Children nodes.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be processed.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 # Iteratee
 

@@ -2,16 +2,16 @@ import test from 'ava'
 import filter from '../lib/filter'
 
 test('filter with predicate', t => {
-  const node = Tree('foo', 'bar', 'baz', 'qux')
-  const filtered = filter(node, node => ('baz' !== node.value))
+  const root = Tree('foo', 'bar', 'baz', 'qux')
+  const filtered = filter(root, node => ('baz' !== node.value))
 
-  t.is(filtered, node)
+  t.is(filtered, root)
   t.deepEqual(filtered, Tree('foo', 'bar', 'qux'))
 })
 
 test('return null if no node statisfy predicate', t => {
-  const node = Tree('foo', 'bar', 'baz', 'qux')
-  const filtered = filter(node, node => false)
+  const root = Tree('foo', 'bar', 'baz', 'qux')
+  const filtered = filter(root, node => false)
 
   t.is(filtered, null)
 })

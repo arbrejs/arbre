@@ -2,8 +2,8 @@ import test from 'ava'
 import toObject from '../lib/to-object'
 
 test('convert to object', t => {
-  const node = Tree({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })
-  const json = toObject(node)
+  const root = Tree({ type: 'foo' }, { type: 'bar' }, { type: 'baz' })
+  const json = toObject(root)
 
   t.deepEqual(json, {
     type: 'foo',
@@ -15,8 +15,8 @@ test('convert to object', t => {
 })
 
 test('add a value property for non-plain objects', t => {
-  const node = Tree('foo', 'bar', 'baz')
-  const json = toObject(node)
+  const root = Tree('foo', 'bar', 'baz')
+  const json = toObject(root)
 
   t.deepEqual(json, {
     value: 'foo',

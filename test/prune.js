@@ -2,13 +2,13 @@ import test from 'ava'
 import prune from '../lib/prune'
 
 test('remove all children', t => {
-  const node = Tree(null, 'foo', 'bar')
-  const first = node.children[0]
-  const last = node.children[1]
-  const ret = prune(node)
+  const root = Tree(null, 'foo', 'bar')
+  const first = root.children[0]
+  const last = root.children[1]
+  const ret = prune(root)
 
   t.is(ret, 2)
-  t.is(node.children.length, 0)
+  t.is(root.children.length, 0)
   t.is(first.parent, null)
   t.is(last.parent, null)
 })

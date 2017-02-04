@@ -2,13 +2,13 @@ import test from 'ava'
 import replace from '../lib/replace'
 
 test('replace given node', t => {
-  const node = Tree('foo', 'bar')
-  const old = node.children[0]
+  const root = Tree('foo', 'bar')
+  const old = root.children[0]
   const target = Tree('baz')
   const ret = replace(target, old)
 
   t.is(ret, target)
-  t.deepEqual(node, Tree('foo', 'baz'))
+  t.deepEqual(root, Tree('foo', 'baz'))
   t.is(old.parent, null)
 })
 

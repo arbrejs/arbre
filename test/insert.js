@@ -12,13 +12,13 @@ test('insert a node', t => {
 })
 
 test('move an existing node', t => {
-  const node = Tree(null, ['foo', 'bar'])
-  const moved = node.children[0].children[0]
-  const ret = insert(node, moved)
+  const root = Tree(null, ['foo', 'bar'])
+  const moved = root.children[0].children[0]
+  const ret = insert(root, moved)
 
   t.is(ret, moved)
-  t.deepEqual(node, Tree(null, 'foo', 'bar'))
-  t.is(moved, node.children[1])
+  t.deepEqual(root, Tree(null, 'foo', 'bar'))
+  t.is(moved, root.children[1])
 })
 
 test('ignore itself', t => {

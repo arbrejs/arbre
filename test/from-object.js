@@ -2,7 +2,7 @@ import test from 'ava'
 import fromObject from '../lib/from-object'
 
 test('create a tree', t => {
-  const node = fromObject({
+  const root = fromObject({
     value: 'foo',
     children: [
       {
@@ -21,7 +21,7 @@ test('create a tree', t => {
     ]
   })
 
-  t.deepEqual(node, Tree(
+  t.deepEqual(root, Tree(
     'foo', [
       'bar',
       'baz',

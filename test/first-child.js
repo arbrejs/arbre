@@ -2,10 +2,10 @@ import test from 'ava'
 import firstChild from '../lib/first-child'
 
 test('return the first child', t => {
-  const node = Tree(null, 'foo')
-  const first = firstChild(node)
+  const root = Tree(null, 'foo')
+  const first = firstChild(root)
 
-  t.is(first, node.children[0])
+  t.is(first, root.children[0])
 })
 
 test('return undefined if no children', t => {

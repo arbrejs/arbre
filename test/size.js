@@ -2,8 +2,8 @@ import test from 'ava'
 import size from '../lib/size'
 
 test('return total number of nodes', t => {
-  const node = Tree('foo', ['bar', ['baz', 'qux']], ['quux', 'corge'])
-  const ret = size(node)
+  const root = Tree('foo', ['bar', ['baz', 'qux']], ['quux', 'corge'])
+  const ret = size(root)
 
   t.is(ret, 6)
 })

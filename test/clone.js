@@ -12,10 +12,10 @@ test('clone a node', t => {
 })
 
 test('does not clone children of a node', t => {
-  const node = Tree('foo', 'bar')
-  const ret = clone(node)
+  const root = Tree('foo', 'bar')
+  const ret = clone(root)
 
-  t.not(ret, node)
+  t.not(ret, root)
   t.deepEqual(ret.children, [])
 })
 

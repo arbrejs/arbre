@@ -9,8 +9,8 @@ test('return true if node does not have children', t => {
 })
 
 test('return false if node has children', t => {
-  const node = Tree(null, 'foo')
-  const ret = isLeaf(node)
+  const root = Tree(null, 'foo')
+  const ret = isLeaf(root)
 
   t.false(ret)
 })

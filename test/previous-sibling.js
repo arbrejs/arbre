@@ -2,17 +2,17 @@ import test from 'ava'
 import previousSibling from '../lib/previous-sibling'
 
 test('return previous sibling', t => {
-  const node = Tree(null, 'foo', 'bar')
-  const first = node.children[0]
-  const last = node.children[1]
+  const root = Tree(null, 'foo', 'bar')
+  const first = root.children[0]
+  const last = root.children[1]
   const prev = previousSibling(last)
 
   t.is(prev, first)
 })
 
 test('return undefined if no previous sibling', t => {
-  const node = Tree(null, 'foo')
-  const first = node.children[0]
+  const root = Tree(null, 'foo')
+  const first = root.children[0]
   const prev = previousSibling(first)
 
   t.is(prev, undefined)

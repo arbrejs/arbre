@@ -2,13 +2,13 @@ import test from 'ava'
 import insertAfter from '../lib/insert-after'
 
 test('insert after a node', t => {
-  const parent = Tree('foo', 'bar', 'qux')
-  const node = parent.children[0]
+  const root = Tree('foo', 'bar', 'qux')
+  const node = root.children[0]
   const target = Tree('baz')
   const ret = insertAfter(node, target)
 
   t.is(ret, target)
-  t.deepEqual(parent, Tree('foo', 'bar', 'baz', 'qux'))
+  t.deepEqual(root, Tree('foo', 'bar', 'baz', 'qux'))
 })
 
 test('ignore orphan node', t => {

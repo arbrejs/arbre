@@ -1,6 +1,6 @@
 # at
 
-Return a descendant node at the given path.
+Return a descendant node at the given indices.
 
 **Parameters**
 
@@ -27,7 +27,7 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 Return the breadth at the node's level.
 
-The **breadth** is the number of siblings to this node + 1.
+The **breadth** is the number of siblings to a node + 1.
 
 **Parameters**
 
@@ -37,42 +37,31 @@ Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 # clone
 
-Clone a node.
+Clone the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be cloned.
--   `creator` **\[[Creator](#creator)](default copy)** Function that creates new node object.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
+-   `creator` **\[[Creator](#creator)]** Function that creates new node object. (optional, default `cloneNode`)
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # deep-clone
 
-Deep clone a node and its children.
+Deeply clone the node.
 
 **Parameters**
 
 -   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
--   `creator` **[Creator](#creator)** Function that creates new node object.
+-   `creator` **\[[Creator](#creator)]** Function that creates new node object. (optional, default `cloneNode`)
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
-# deep-equal
-
-Check if a node deep equals another node.
-
-**Parameters**
-
--   `node1` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** First node.
--   `node2` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Second node.
-
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
 # depth
 
-Return the depth of a node.
+Return the depth of the node.
 
-The `depth` is the number of edges from the node to the root.
+The **depth** is the number of edges from a node to the root.
 
 **Parameters**
 
@@ -80,54 +69,43 @@ The `depth` is the number of edges from the node to the root.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
-# equal
-
-Check if a node equals another node.
-
-**Parameters**
-
--   `node1` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** First node.
--   `node2` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Second node.
-
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
 # filter
 
-Filter a node and its children given a predicate.
+Filter the node given a predicate.
 
 When a node is removed, all its children are removed too.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be filtered.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `predicate` **[Predicate](#predicate)** Filter predicate.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # find
 
-Find a node with the given predicate.
+Find the node with the given predicate.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be searched.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `predicate` **[Predicate](#predicate)** Search predicate.
 
 Returns **([Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
 
 # first-child
 
-Return the first child of a node.
+Return the first child of the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # first-sibling
 
-Return the first sibling of a node.
+Return the first sibling of the node.
 
 The first **sibling** node is the left-most child of a node's parent.
 If the node is the root node or the only child, it returns the node.
@@ -140,40 +118,40 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 # from-array
 
-Convert an array-notation tree into an `arbre` tree.
+Convert an **array-notation** tree into a `Node` tree.
 
 **Parameters**
 
--   `creator` **[Creator](#creator)** Function that creates new node object.
 -   `array` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array-notation tree.
+-   `creator` **\[[Creator](#creator)]** Function that creates new node object. (optional, default `cloneNode`)
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # from-json
 
-Convert a JSON-notation tree into an `arbre` tree.
+Convert a **JSON-notation** tree into an `Node` tree.
 
 **Parameters**
 
--   `creator` **[Creator](#creator)** Function that creates new node object.
 -   `json` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** JSON-notation tree.
+-   `creator` **\[[Creator](#creator)]** Function that creates new node object. (optional, default `cloneNode`)
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # from-object
 
-Convert an plain-object-notation tree into an `arbre` tree.
+Convert an **plain-object-notation** tree into a `Node` tree.
 
 **Parameters**
 
--   `creator` **[Creator](#creator)** Function used to create `arbre` nodes.
 -   `obj` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Plain-object-notation tree.
+-   `creator` **\[[Creator](#creator)]** Function used to create `arbre` nodes. (optional, default `cloneNode`)
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # has-children
 
-Return `true` if the node has ny child node.
+Return `true` if the node has at least one child.
 
 **Parameters**
 
@@ -183,28 +161,44 @@ Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 # has
 
-Check if a node has another node as child.
+Return `true` if the node has the given node as child.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `child` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to check.
 
 Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-# hoist
+# height
 
-Hoist a node children.
+Return the height of the node.
+
+The **height** is the length of the longest path from a node to its deepest
+ancestor.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node whose children are hoisted.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+# hoist
+
+Hoist the node's children.
+
+**Hoisting** a node is an operation that insert all children of node after
+the node itself.
+
+**Parameters**
+
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 # index
 
-Return the index of a node.
+Return the index of the node.
 
 **Parameters**
 
@@ -214,22 +208,22 @@ Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 # insert-after
 
-Insert a node after another.
+Insert a target node after the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Reference node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `target` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be inserted.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # insert-at
 
-Insert a node at the given index.
+Insert a target node at the given index.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Reference node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `target` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be inserted.
 -   `index` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index where to insert the target node.
 
@@ -237,11 +231,11 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 # insert-before
 
-Insert a node before another.
+Insert a target node before the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Reference node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `target` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be inserted.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
@@ -252,7 +246,7 @@ Insert a node.
 
 **Parameters**
 
--   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `target` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be inserted.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
@@ -261,7 +255,7 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 Return `true` if the node is the first sibling.
 
-If the node is the root node or the only child, it returns the `true`.
+If the node is the root node or the only child, it returns `true`.
 
 **Parameters**
 
@@ -273,7 +267,7 @@ Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Return `true` if the node is the last sibling.
 
-If the node is the root node or the only child, it returns the `true`.
+If the node is the root node or the only child, it returns `true`.
 
 **Parameters**
 
@@ -283,17 +277,19 @@ Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 # is-leaf
 
-Check if a node is a leaf: it has no children.
+Return `true` if the node is a leaf.
+
+A **leaf** is a node that does not have any children.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to check.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 # is-node
 
-Check if an object is an arbre-compatible node.
+Return `true` is the object is a `Node`.
 
 **Parameters**
 
@@ -301,24 +297,38 @@ Check if an object is an arbre-compatible node.
 
 Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-# is-root
+# is-only-child
 
-Check if a node is a root: it has no parent.
+Return `true` if the node is the only child of its parent.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to check.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-# Node
+# is-root
 
-`arbre` compatible node.
+Return `true` if the node is a root.
 
-**Properties**
+a **root** is a node without parent.
 
--   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
--   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)>** Children nodes.
+**Parameters**
+
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+# is-sibling-of
+
+Return `true` if a target node is a sibling of the node.
+
+**Parameters**
+
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
+-   `target` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Compared node.
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 # Creator
 
@@ -350,9 +360,18 @@ Apply an operation on a node.
 
 Returns **([Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
 
+# Node
+
+`arbre` compatible node.
+
+**Properties**
+
+-   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
+-   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)>** Children nodes.
+
 # last-child
 
-Get the last child of a node.
+Return the last child of the node.
 
 **Parameters**
 
@@ -362,7 +381,7 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 # last-sibling
 
-Return the last sibling of a node.
+Return the last sibling of the node.
 
 The last sibling node is the right-most child of a node's parent.
 If the node is the root node or the only child, it returns the node.
@@ -375,11 +394,13 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 # length
 
-Get the length of a node: the number of children.
+Return the length of the node.
+
+The **length** is the number of the node's children.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to check.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
@@ -387,7 +408,7 @@ Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Return the level of a node.
 
-The `level` of a node is its `depth` + 1.
+The **level** of a node is its **depth** + 1.
 
 **Parameters**
 
@@ -397,11 +418,11 @@ Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 # map
 
-Maps over each node recursively.
+Map a node and its descendants.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be mapped over.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `iteratee` **[Iteratee](#iteratee)** Return the altered node or a new node.
 -   `order` **\[[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** [description] (optional, default `'pre'`)
 
@@ -409,13 +430,13 @@ Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibli
 
 # next-sibling
 
-Return the next sibling of a node.
+Return the next sibling of the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Reference node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
-Returns **([Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
+Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # path
 
@@ -431,102 +452,106 @@ Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 # previous-sibling
 
-Return the previous sibling of a node.
+Return the previous sibling of the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Reference node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
-Returns **([Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
+Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # prune
 
-Prune a node: remove all its children.
+Prune the node.
+
+It remove all the node's children making it a leaf node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to prune.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 # remove
 
-Remove a node.
+Remove the node from its parent.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to remove.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # replace
 
-Replace a node.
+Replace the node by a target node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to replace.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `target` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Replacement node.
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
 
 # siblings
 
-Return the siblings of a node.
+Return the siblings of the node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Reference node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
 
 # size
 
-Return the size of a tree.
+Return the size of the node.
+
+The **size** is the total number of descendants of a node.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Root node.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 # to-array
 
-Convert a tree to an array-notation.
+Convert a `Node` tree to an **array-notation** tree.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Root node of the tree.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
 
 # to-json
 
-Converts a tree to JSON-notation.
+Convert a `Node` tree to an **JSON-notation** tree.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Root node of the tree.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 # to-object
 
-Convert a tree to object-notation.
+Convert a `Node` tree to an **object-notation** tree.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Root node of the tree.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 # walk
 
-Walk a tree, visiting each node.
+Walk a node and its descendants.
 
 **Parameters**
 
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Root node of thee tree.
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node.
 -   `iteratee` **[Iteratee](#iteratee)** Called on each node.
 -   `order` **\[(pre | post)]** Traversal mode (optional, default `'pre'`)
 

@@ -2,7 +2,7 @@ import test from 'ava'
 import fromJSON from '../lib/from-json'
 
 test('create a tree', t => {
-  const node = fromJSON(JSON.stringify({
+  const root = fromJSON(JSON.stringify({
     type: 'foo',
     children: [
       {
@@ -21,7 +21,7 @@ test('create a tree', t => {
     ]
   }))
 
-  t.deepEqual(node, Tree(
+  t.deepEqual(root, Tree(
     { type: 'foo' }, [
       { type: 'bar' },
       { type: 'baz' },

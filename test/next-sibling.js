@@ -2,7 +2,7 @@ import test from 'ava'
 import nextSibling from '../lib/next-sibling'
 
 test('return next sibling', t => {
-  const root = Tree(null, 'foo', 'bar')
+  const root = Tree(0, 1, 2)
   const first = root.children[0]
   const last = root.children[1]
   const next = nextSibling(first)
@@ -11,7 +11,7 @@ test('return next sibling', t => {
 })
 
 test('return undefined if no next sibling', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const last = root.children[0]
   const next = nextSibling(last)
 
@@ -19,7 +19,7 @@ test('return undefined if no next sibling', t => {
 })
 
 test('return undefined if no parent', t => {
-  const node = Tree()
+  const node = Tree(0)
   const next = nextSibling(node)
 
   t.is(next, undefined)

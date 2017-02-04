@@ -3,32 +3,23 @@ import fromObject from '../lib/from-object'
 
 test('create a tree', t => {
   const root = fromObject({
-    value: 'foo',
+    value: 0,
     children: [
       {
-        value: 'bar',
+        value: 1,
         children: [
-          { value: 'baz' },
-          { value: 'qux' }
+          { value: 2 },
+          { value: 3 }
         ]
       },
       {
-        value: 'quux',
+        value: 4,
         children: [
-          { value: 'corge' }
+          { value: 5 }
         ]
       }
     ]
   })
 
-  t.deepEqual(root, Tree(
-    'foo', [
-      'bar',
-      'baz',
-      'qux'
-    ], [
-      'quux',
-      'corge'
-    ]
-  ))
+  t.deepEqual(root, Tree(0, [1, 2, 3], [4, 5]))
 })

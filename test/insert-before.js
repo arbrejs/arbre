@@ -2,13 +2,13 @@ import test from 'ava'
 import insertBefore from '../lib/insert-before'
 
 test('insert before a node', t => {
-  const root = Tree('foo', 'baz', 'qux')
+  const root = Tree(0, 2, 3)
   const node = root.children[0]
-  const target = Tree('bar')
+  const target = Tree(1)
   const ret = insertBefore(node, target)
 
   t.is(ret, target)
-  t.deepEqual(root, Tree('foo', 'bar', 'baz', 'qux'))
+  t.deepEqual(root, Tree(0, 1, 2, 3))
 })
 
 test('ignore orphan node', t => {

@@ -2,7 +2,7 @@ import test from 'ava'
 import firstChild from '../lib/first-child'
 
 test('return the first child', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const first = firstChild(root)
 
   t.is(first, root.children[0])

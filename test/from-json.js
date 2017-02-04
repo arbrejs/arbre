@@ -3,32 +3,23 @@ import fromJSON from '../lib/from-json'
 
 test('create a tree', t => {
   const root = fromJSON(JSON.stringify({
-    type: 'foo',
+    value: 0,
     children: [
       {
-        type: 'bar',
+        value: 1,
         children: [
-          { type: 'baz' },
-          { type: 'qux' }
+          { value: 2 },
+          { value: 3 }
         ]
       },
       {
-        type: 'quux',
+        value: 4,
         children: [
-          { type: 'corge' }
+          { value: 5 }
         ]
       }
     ]
   }))
 
-  t.deepEqual(root, Tree(
-    { type: 'foo' }, [
-      { type: 'bar' },
-      { type: 'baz' },
-      { type: 'qux' }
-    ], [
-      { type: 'quux' },
-      { type: 'corge' }
-    ]
-  ))
+  t.deepEqual(root, Tree(0, [1, 2, 3], [4, 5]))
 })

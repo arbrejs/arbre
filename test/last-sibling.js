@@ -2,7 +2,7 @@ import test from 'ava'
 import lastSibling from '../lib/last-sibling'
 
 test('return the last sibling', t => {
-  const root = Tree(null, 'foo', 'bar')
+  const root = Tree(0, 1, 2)
   const node = root.children[1]
   const last = lastSibling(node)
 
@@ -17,7 +17,7 @@ test('return itself if root', t => {
 })
 
 test('return itself if only child', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const node = root.children[0]
   const last = lastSibling(node)
 

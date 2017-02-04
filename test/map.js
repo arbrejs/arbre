@@ -2,59 +2,55 @@ import test from 'ava'
 import map from '../lib/map'
 
 test('mutate nodes (pre-order)', t => {
-  const root = Tree({ type: 'foo' }, { type: 'bar' })
-  const ret = map(root, node => {
-    node.value.type = 'baz'
-  })
+  const root = Tree(0, 1)
+  const ret = map(root, node => { node.value = 2 })
 
   t.is(ret, root)
-  t.deepEqual(root, Tree({ type: 'baz' }, { type: 'baz' }))
+  t.deepEqual(root, Tree(2, 2))
 })
 
 test('replace node when iteratee returns a new one (pre-order)', t => {
-  const root = Tree('foo', 'bar')
+  const root = Tree(0, 1)
   const ret = map(root, node => {
-    if ('bar' === node.value) return Tree('baz', 'qux', 'corge')
+    if (1 === node.value) return Tree(2, 3, 5)
   })
 
   t.is(ret, root)
-  t.deepEqual(root, Tree('foo', ['baz', 'qux', 'corge']))
+  t.deepEqual(root, Tree(0, [2, 3, 5]))
 })
 
 test('remove node when iteratee returns null (pre-order)', t => {
-  const root = Tree('foo', 'bar', 'baz', 'qux')
-  const ret = map(root, node => ('baz' === node.value ? null : node))
+  const root = Tree(0, 1, 2, 3)
+  const ret = map(root, node => (2 === node.value ? null : node))
 
   t.is(ret, root)
-  t.deepEqual(root, Tree('foo', 'bar', 'qux'))
+  t.deepEqual(root, Tree(0, 1, 3))
 })
 
 test('mutate nodes (post-order)', t => {
-  const root = Tree({ type: 'foo' }, { type: 'bar' })
-  const ret = map(root, node => {
-    node.value.type = 'baz'
-  }, 'post')
+  const root = Tree(0, 1)
+  const ret = map(root, node => { node.value = 2 }, 'post')
 
   t.is(ret, root)
-  t.deepEqual(root, Tree({ type: 'baz' }, { type: 'baz' }))
+  t.deepEqual(root, Tree(2, 2))
 })
 
 test('replace node when iteratee returns a new one (post-order)', t => {
-  const root = Tree('foo', 'bar')
+  const root = Tree(0, 1)
   const ret = map(root, node => {
-    if ('bar' === node.value) return Tree('baz', 'qux', 'corge')
+    if (1 === node.value) return Tree(2, 3, 5)
   }, 'post')
 
   t.is(ret, root)
-  t.deepEqual(root, Tree('foo', ['baz', 'qux', 'corge']))
+  t.deepEqual(root, Tree(0, [2, 3, 5]))
 })
 
 test('remove node when iteratee returns null (post-order)', t => {
-  const root = Tree('foo', ['bar', 'baz', 'qux'])
-  const ret = map(root, node => ('bar' === node.value ? null : node), 'post')
+  const root = Tree(0, [1, 2, 3])
+  const ret = map(root, node => (1 === node.value ? null : node), 'post')
 
   t.is(ret, root)
-  t.deepEqual(root, Tree('foo'))
+  t.deepEqual(root, Tree(0))
 })
 
 test('ignore no arguments', t => {

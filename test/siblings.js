@@ -2,7 +2,7 @@ import test from 'ava'
 import siblings from '../lib/siblings'
 
 test('return an array of siblings', t => {
-  const root = Tree(null, 'foo', 'bar', 'baz')
+  const root = Tree(0, 1, 2, 3)
   const second = root.children[1]
   const secondSiblings = siblings(second)
 
@@ -12,7 +12,7 @@ test('return an array of siblings', t => {
 })
 
 test('return an empty array if no siblings', t => {
-  const node = Tree()
+  const node = Tree(0)
   const nodeSiblings = siblings(node)
 
   t.deepEqual(nodeSiblings, [])

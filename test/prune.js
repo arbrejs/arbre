@@ -2,7 +2,7 @@ import test from 'ava'
 import prune from '../lib/prune'
 
 test('remove all children', t => {
-  const root = Tree(null, 'foo', 'bar')
+  const root = Tree(0, 1, 2)
   const first = root.children[0]
   const last = root.children[1]
   const ret = prune(root)

@@ -2,7 +2,7 @@ import test from 'ava'
 import remove from '../lib/remove'
 
 test('remove a child', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const child = root.children[0]
   const ret = remove(child)
 
@@ -12,7 +12,7 @@ test('remove a child', t => {
 })
 
 test('ignore orphan node', t => {
-  const node = Tree()
+  const node = Tree(0)
 
   t.notThrows(() => {
     const ret = remove(node)

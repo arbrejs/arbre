@@ -9,7 +9,7 @@ test('return true if node has no parent', t => {
 })
 
 test('return false if node has a parent', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const child = root.children[0]
   const ret = isRoot(child)
 

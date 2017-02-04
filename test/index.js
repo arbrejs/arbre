@@ -2,7 +2,7 @@ import test from 'ava'
 import index from '../lib/index'
 
 test('return node index in parent node', t => {
-  const root = Tree(null, 'foo', 'bar', 'baz')
+  const root = Tree(0, 1, 2, 3)
 
   for (let i = 0; i < 3; i++) {
     const ret = index(root.children[i])

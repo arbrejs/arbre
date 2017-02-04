@@ -2,7 +2,7 @@ import test from 'ava'
 import previousSibling from '../lib/previous-sibling'
 
 test('return previous sibling', t => {
-  const root = Tree(null, 'foo', 'bar')
+  const root = Tree(0, 1, 2)
   const first = root.children[0]
   const last = root.children[1]
   const prev = previousSibling(last)
@@ -11,7 +11,7 @@ test('return previous sibling', t => {
 })
 
 test('return undefined if no previous sibling', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const first = root.children[0]
   const prev = previousSibling(first)
 

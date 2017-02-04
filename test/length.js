@@ -2,7 +2,7 @@ import test from 'ava'
 import length from '../lib/length'
 
 test('return number of children', t => {
-  const root = Tree(null, 'foo', 'bar')
+  const root = Tree(0, 1, 2)
   const ret = length(root)
 
   t.is(ret, 2)

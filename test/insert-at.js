@@ -2,12 +2,12 @@ import test from 'ava'
 import insertAt from '../lib/insert-at'
 
 test('insert at given index', t => {
-  const root = Tree('foo', 'bar', 'qux')
-  const inserted = Tree('baz')
+  const root = Tree(0, 1, 3)
+  const inserted = Tree(2)
   const ret = insertAt(root, inserted, 1)
 
   t.is(ret, inserted)
-  t.deepEqual(root, Tree('foo', 'bar', 'baz', 'qux'))
+  t.deepEqual(root, Tree(0, 1, 2, 3))
 })
 
 test('ignore out of lower-bound index', t => {

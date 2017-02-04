@@ -2,7 +2,7 @@ import test from 'ava'
 import lastChild from '../lib/last-child'
 
 test('return last child', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const last = lastChild(root)
 
   t.is(last, root.children[0])

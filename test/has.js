@@ -2,7 +2,7 @@ import test from 'ava'
 import has from '../lib/has'
 
 test('check child presence', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const child = root.children[0]
   const ret = has(root, child)
 
@@ -10,7 +10,7 @@ test('check child presence', t => {
 })
 
 test('return false if no child is present', t => {
-  const root = Tree(null, 'foo')
+  const root = Tree(0, 1)
   const orphan = Tree()
   const ret = has(root, orphan)
 

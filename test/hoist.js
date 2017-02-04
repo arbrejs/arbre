@@ -2,11 +2,11 @@ import test from 'ava'
 import hoist from '../lib/hoist'
 
 test('insert children just after itself', t => {
-  const root = Tree('foo', ['bar', 'baz', 'quux', 'corge'], 'qux')
+  const root = Tree(0, [1, 2, 4, 5], 3)
   const ret = hoist(root.children[0])
 
   t.is(ret, 3)
-  t.deepEqual(root, Tree('foo', 'bar', 'baz', 'quux', 'corge', 'qux'))
+  t.deepEqual(root, Tree(0, 1, 2, 4, 5, 3))
 })
 
 test('ignore orphan node', t => {

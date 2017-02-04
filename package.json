@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "clone": "^2.1.0",
-    "deep-eql": "^2.0.1",
     "tree-crawl": "^0.5.0",
     "tree-morph": "^0.1.0",
     "tree-mutate": "^0.4.0"

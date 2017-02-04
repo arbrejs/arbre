@@ -25,7 +25,7 @@
     "coverage": "meta coverage",
     "see-coverage": "meta see-coverage",
     "check-coverage": "meta check-coverage",
-    "docs": "documentation build lib/*.js --format md --output docs/api.md",
+    "docs": "documentation build lib/*.js -c documentation.yml -f md -o docs/api.md",
     "prebuild": "npm run lint -s",
     "build": "meta build",
     "prepublish": "npm run build -s",

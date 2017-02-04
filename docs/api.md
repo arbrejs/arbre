@@ -330,45 +330,6 @@ Return `true` if a target node is a sibling of the node.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
-# Creator
-
-Create a new `arbre` node.
-
-**Parameters**
-
--   `Node` **Any** data.
-
-Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
-
-# Predicate
-
-Test if a node satifies a condition.
-
-**Parameters**
-
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be processed.
-
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-# Iteratee
-
-Apply an operation on a node.
-
-**Parameters**
-
--   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be processed.
-
-Returns **([Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 
-
-# Node
-
-`arbre` compatible node.
-
-**Properties**
-
--   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
--   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)>** Children nodes.
-
 # last-child
 
 Return the last child of the node.
@@ -556,3 +517,42 @@ Walk a node and its descendants.
 -   `order` **\[(pre | post)]** Traversal mode (optional, default `'pre'`)
 
 Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
+
+# Node
+
+**arbre** compatible node.
+
+**Properties**
+
+-   `parent` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Parent node.
+-   `children` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)>** Children nodes.
+
+# Creator
+
+Create a new `Node`.
+
+**Parameters**
+
+-   `Node` **Any** data.
+
+Returns **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** 
+
+# Predicate
+
+Test if a node satisfies a condition.
+
+**Parameters**
+
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be processed.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+# Iteratee
+
+Apply an operation on a node.
+
+**Parameters**
+
+-   `node` **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)** Node to be processed.
+
+Returns **([Node](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** 

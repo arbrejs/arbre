@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-  <a href="//travis-ci.org/ngryman/arbre">
-    <img alt="Build Status" src="https://img.shields.io/travis/ngryman/arbre.svg">
+  <a href="//travis-ci.org/arbrejs/arbre">
+    <img alt="Build Status" src="https://img.shields.io/travis/arbrejs/arbre.svg">
   </a>
-  <a href="//codecov.io/github/ngryman/arbre">
-    <img alt="Coverage" src="https://img.shields.io/codecov/c/github/ngryman/arbre.svg">
+  <a href="//codecov.io/github/arbrejs/arbre">
+    <img alt="Coverage" src="https://img.shields.io/codecov/c/github/arbrejs/arbre.svg">
   </a>
 </p>
 

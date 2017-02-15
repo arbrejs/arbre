@@ -1,4 +1,4 @@
-import { cloneNode } from '../../lib/util'
+import cloneNode from '../../lib/internal/clone-node'
 
 function Node(value) {
   return cloneNode({ value })

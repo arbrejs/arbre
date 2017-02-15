@@ -24,3 +24,13 @@ test('convert to object', t => {
     ]
   })
 })
+
+test('convert to object an object value', t => {
+  const root = Tree({ foo: 'bar' }, { baz: 'qux' })
+  const json = toObject(root)
+
+  t.deepEqual(json, {
+    foo: 'bar',
+    children: [{ baz: 'qux' }]
+  })
+})

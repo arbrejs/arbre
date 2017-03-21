@@ -17,23 +17,16 @@ test('return deeper nodes', t => {
   t.is(ret.value, 2)
 })
 
-test('return undefined if index is out of range', t => {
+test('return null if index is out of range', t => {
   const root = Tree()
   const ret = at(root, 0)
 
-  t.is(ret, undefined)
+  t.is(ret, null)
 })
 
 test('return undefined if index is too deep', t => {
   const root = Tree()
   const ret = at(root, 0, 0)
 
-  t.is(ret, undefined)
-})
-
-test('ignore no arguments', t => {
-  t.notThrows(() => {
-    const ret = at()
-    t.is(ret, undefined)
-  })
+  t.is(ret, null)
 })

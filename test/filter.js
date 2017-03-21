@@ -15,10 +15,3 @@ test('return null if no node statisfy predicate', t => {
 
   t.is(filtered, null)
 })
-
-test('ignore no arguments', t => {
-  t.notThrows(() => {
-    const ret = filter()
-    t.is(ret, null)
-  })
-})

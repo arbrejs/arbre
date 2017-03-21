@@ -10,17 +10,17 @@ test('return next sibling', t => {
   t.is(next, last)
 })
 
-test('return undefined if no next sibling', t => {
+test('return null if no next sibling', t => {
   const root = Tree(0, 1)
   const last = root.children[0]
   const next = nextSibling(last)
 
-  t.is(next, undefined)
+  t.is(next, null)
 })
 
 test('return undefined if no parent', t => {
   const node = Tree(0)
   const next = nextSibling(node)
 
-  t.is(next, undefined)
+  t.is(next, null)
 })

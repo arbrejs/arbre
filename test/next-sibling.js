@@ -18,7 +18,7 @@ test('return null if no next sibling', t => {
   t.is(next, null)
 })
 
-test('return undefined if no parent', t => {
+test('return null if no parent', t => {
   const node = Tree(0)
   const next = nextSibling(node)
 

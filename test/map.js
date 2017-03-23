@@ -52,10 +52,3 @@ test('remove node when iteratee returns null (post-order)', t => {
   t.is(ret, root)
   t.deepEqual(root, Tree(0))
 })
-
-test('ignore no arguments', t => {
-  t.notThrows(() => {
-    const ret = map()
-    t.is(ret, undefined)
-  })
-})

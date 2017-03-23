@@ -24,7 +24,7 @@ test('return null if index is out of range', t => {
   t.is(ret, null)
 })
 
-test('return undefined if index is too deep', t => {
+test('return null if index is too deep', t => {
   const root = Tree()
   const ret = at(root, 0, 0)
 

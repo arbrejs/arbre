@@ -15,11 +15,11 @@ test('return the first found node', t => {
   t.is(found, root.children[0])
 })
 
-test('return undefined if no node is found', t => {
+test('return null if no node is found', t => {
   const root = Tree(0, 1)
   const found = find(root, node => 2 === node.value)
 
-  t.is(found, undefined)
+  t.is(found, null)
 })
 
 test('do not find itself', t => {
@@ -28,11 +28,4 @@ test('do not find itself', t => {
 
   t.not(root, found)
   t.is(found, root.children[0])
-})
-
-test('ignore no arguments', t => {
-  t.notThrows(() => {
-    const ret = find()
-    t.is(ret, undefined)
-  })
 })

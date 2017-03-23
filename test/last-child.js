@@ -8,9 +8,9 @@ test('return last child', t => {
   t.is(last, root.children[0])
 })
 
-test('return undefined if no children', t => {
+test('return null if no children', t => {
   const node = Tree()
   const last = lastChild(node)
 
-  t.is(last, undefined)
+  t.is(last, null)
 })

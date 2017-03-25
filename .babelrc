@@ -1,0 +1,40 @@
+{
+  "env": {
+    "build-browser": {
+      "presets": [
+        ["env", {
+          "targets": { "browsers": "> 1%" },
+          "modules": false
+        }]
+      ]
+    },
+    "build-standalone": {
+      "presets": [
+        ["env", {
+          "targets": { "browsers": "> 1%" },
+          "modules": false
+        }],
+        "babili"
+      ]
+    },
+    "build-node": {
+      "presets": [
+        ["env", {
+          "targets": { "node": 5 },
+          "modules": false
+        }]
+      ]
+    },
+    "test": {
+      "ignore": false,
+      "presets": [
+        ["env", {
+          "targets": { "node": true }
+        }]
+      ],
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
+}

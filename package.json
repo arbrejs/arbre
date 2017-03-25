@@ -18,32 +18,44 @@
     "dist/"
   ],
   "scripts": {
-    "lint": "meta lint",
-    "pretest": "npm run lint -s",
-    "test": "meta test",
-    "dev": "meta dev",
-    "coverage": "meta coverage",
-    "see-coverage": "meta see-coverage",
-    "check-coverage": "meta check-coverage",
-    "docs": "documentation build lib/{*/*,*}.js -c documentation.yml -f md -o docs/api.md",
-    "prebuild": "npm run lint -s",
-    "build": "meta build",
-    "prepublish": "npm run build -s",
-    "precommit": "npm run docs -s"
+    "lint": "eslint *.js {lib,test}/**/*.js",
+    "pretest": "npm run lint",
+    "test": "cross-env NODE_ENV=test nyc ava",
+    "docs": "documentation build lib/** -c documentation.yml -f md -o docs/api.md",
+    "start": "npm run test -- --watch",
+    "see-coverage": "nyc report --reporter=html && open coverage/index.html",
+    "check-coverage": "nyc check-coverage --lines 100 --functions 100 --branches 100",
+    "build:node": "cross-env NODE_ENV=build-node rollup -c",
+    "build:browser": "cross-env NODE_ENV=build-browser rollup -c",
+    "build:standalone": "cross-env NODE_ENV=build-standalone rollup -c",
+    "build": "npm run build:node && npm run build:browser && npm run build:standalone",
+    "prepublish": "npm run build",
+    "precommit": "npm run docs && git add docs",
+    "coverage": "nyc report --reporter=text-lcov | codecov"
   },
   "dependencies": {
-    "clone": "^2.1.0",
-    "tree-crawl": "^0.5.0",
-    "tree-morph": "^0.1.0",
-    "tree-mutate": "^0.4.0"
+    "clone": "^2.1.1",
+    "tree-crawl": "^0.6.1",
+    "tree-morph": "^0.2.1",
+    "tree-mutate": "^0.4.1"
   },
   "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-preset-env": "^1.2.2",
+    "babel-register": "^6.24.0",
     "documentation": "^4.0.0-beta.18",
-    "husky": "^0.12.0",
-    "meta-dev": "^0.4.2"
-  },
-  "eslintConfig": {
-    "extends": "ngryman"
+    "eslint": "^3.18.0",
+    "eslint-config-ngryman": "^1.7.1",
+    "husky": "^0.13.2",
+    "nyc": "^10.1.2",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-cleanup": "^1.0.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1"
   },
   "ava": {
     "concurrency": 4,
@@ -51,21 +63,5 @@
       "babel-register",
       "./test/helpers/tree"
     ]
-  },
-  "babel": {
-    "env": {
-      "test": {
-        "presets": [
-          "node5"
-        ],
-        "plugins": [
-          "istanbul"
-        ]
-      }
-    }
-  },
-  "nyc": {
-    "sourceMap": false,
-    "instrument": false
   }
 }

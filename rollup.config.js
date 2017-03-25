@@ -5,14 +5,14 @@ import cleanup from 'rollup-plugin-cleanup'
 import uglify from 'rollup-plugin-uglify'
 
 const isNode = ('build-node' === process.env.NODE_ENV)
-const isStandalone = ('build-standalone' === process.env.NODE_ENV)
+const isMinified = ('1' === process.env.MIN)
 
 const pkg = require('./package.json')
 
 export default {
   format: (isNode ? 'cjs' : 'umd'),
   entry: 'index.js',
-  dest: `dist/arbre.${isNode ? 'node' : 'browser'}${isStandalone ? '.min' : ''}.js`,
+  dest: `dist/arbre.${isNode ? 'node' : 'browser'}${isMinified ? '.min' : ''}.js`,
   moduleName: 'arbre',
   external: isNode ? Object.keys(pkg.dependencies || {}) : [],
   plugins: [
@@ -34,16 +34,8 @@ export default {
         'external-helpers'
       ]
     }),
-    // XXX: https://github.com/rollup/rollup-plugin-babel/issues/88
-    {
-      transformBundle(code) {
-        const start = code.indexOf('var asyncGenerator = function () {')
-        const end = code.indexOf('}();', start)
-        return (code.substr(0, start) + code.substr(end + '}();'.length))
-      }
-    },
     cleanup(),
-    isStandalone ? uglify({
+    isMinified ? uglify({
       mangleProperties: {
         regex: /_.*/
       }

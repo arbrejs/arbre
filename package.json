@@ -27,14 +27,13 @@
     "check-coverage": "nyc check-coverage --lines 100 --functions 100 --branches 100",
     "build:node": "cross-env NODE_ENV=build-node rollup -c",
     "build:browser": "cross-env NODE_ENV=build-browser rollup -c",
-    "build:standalone": "cross-env NODE_ENV=build-standalone rollup -c",
-    "build": "npm run build:node && npm run build:browser && npm run build:standalone",
+    "build:browser-min": "cross-env NODE_ENV=build-browser MIN=1 rollup -c",
+    "build": "npm run build:node && npm run build:browser && npm run build:browser-min",
     "prepublish": "npm run build",
     "precommit": "npm run docs && git add docs",
     "coverage": "nyc report --reporter=text-lcov | codecov"
   },
   "dependencies": {
-    "clone": "^2.1.1",
     "tree-crawl": "^0.6.1",
     "tree-morph": "^0.2.1",
     "tree-mutate": "^0.4.1"
@@ -45,16 +44,17 @@
     "babel-plugin-istanbul": "^4.1.1",
     "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0",
+    "cross-env": "^3.2.4",
     "documentation": "^4.0.0-beta.18",
     "eslint": "^3.18.0",
     "eslint-config-ngryman": "^1.7.1",
     "husky": "^0.13.2",
     "nyc": "^10.1.2",
+    "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-cleanup": "^1.0.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-uglify": "^1.0.1"
   },
   "ava": {

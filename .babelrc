@@ -8,15 +8,6 @@
         }]
       ]
     },
-    "build-standalone": {
-      "presets": [
-        ["env", {
-          "targets": { "browsers": "> 1%" },
-          "modules": false
-        }],
-        "babili"
-      ]
-    },
     "build-node": {
       "presets": [
         ["env", {

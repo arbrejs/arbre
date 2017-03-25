@@ -1,5 +1,6 @@
 {
   "globals": {
-    "Tree": true
+    "Tree": true,
+    "Node": true
   }
 }

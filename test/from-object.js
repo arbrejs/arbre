@@ -1,5 +1,6 @@
 import test from 'ava'
 import fromObject from '../lib/from-object'
+import { clone } from './helpers/node'
 
 test('create a tree', t => {
   const root = fromObject({
@@ -19,7 +20,7 @@ test('create a tree', t => {
         ]
       }
     ]
-  })
+  }, clone)
 
   t.deepEqual(root, Tree(0, [1, 2, 3], [4, 5]))
 })

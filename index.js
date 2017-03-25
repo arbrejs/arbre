@@ -1,6 +1,5 @@
 export { default as at } from './lib/at'
 export { default as breadth } from './lib/breadth'
-export { default as clone } from './lib/clone'
 export { default as deepClone } from './lib/deep-clone'
 export { default as depth } from './lib/depth'
 export { default as filter } from './lib/filter'

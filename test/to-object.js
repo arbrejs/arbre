@@ -1,9 +1,10 @@
 import test from 'ava'
 import toObject from '../lib/to-object'
+import { serialize } from './helpers/node'
 
 test('convert to object', t => {
   const root = Tree(0, [1, 2, 3], [4, 5])
-  const json = toObject(root)
+  const json = toObject(root, serialize)
 
   t.deepEqual(json, {
     value: 0,
@@ -22,15 +23,5 @@ test('convert to object', t => {
         ]
       }
     ]
-  })
-})
-
-test('convert to object an object value', t => {
-  const root = Tree({ foo: 'bar' }, { baz: 'qux' })
-  const json = toObject(root)
-
-  t.deepEqual(json, {
-    foo: 'bar',
-    children: [{ baz: 'qux' }]
   })
 })
